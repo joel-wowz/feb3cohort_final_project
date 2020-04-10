@@ -46,8 +46,8 @@ class Api::TestsController < ApplicationController
 ```
 
 and it lives in the `api` folder! Put all your controllers in there!
-##Joseph Notes
--- Running Bin exec rake routes seems to update the current routes rather then bin/rake routes
+## Joseph Notes
+Running Bin exec rake routes seems to update the current routes rather then bin/rake routes
 
 ## Deployment to Heroku
 
