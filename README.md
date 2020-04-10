@@ -1,6 +1,4 @@
-## NOTE: This repo has not been updated in a while.
 
-You may find that the versions of React, Rails, and Ruby are _NOT_ the most current. Feel free to update this repo and make a PR with new versions. Also, please let me know if you run into any bugs.
 
 # React + Rails No-Fluff Boilerplate
 
@@ -10,16 +8,6 @@ Note! This boilerplate has _no fluff_! That means that there's nothing set up fo
 
 The main important bit is that the React project has `proxy` set to `localhost:3001` in the `package.json` file. Take a look!
 
-## Hall of Fame
-
-Here are some projects that have been built using this boilerplate.
-
-- [latercart](https://github.com/bonitac/latercart)
-- [Cards-Against-the-Internet](https://github.com/csx773/Cards-Against-the-Internet)
-- [Jetify](https://github.com/shadeying/Jetify)
-- [watchpoll](https://github.com/grey275/watchpoll)
-- [StartDuck](https://github.com/JerChuang/StartDuck)
-- [Change-App](https://github.com/ZHShang/Change-App)
 
 ## Using the boilerplate
 
@@ -58,6 +46,8 @@ class Api::TestsController < ApplicationController
 ```
 
 and it lives in the `api` folder! Put all your controllers in there!
+##Joseph Notes
+-- Running Bin exec rake routes seems to update the current routes rather then bin/rake routes
 
 ## Deployment to Heroku
 
