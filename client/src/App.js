@@ -19,12 +19,10 @@ export default function App(props) {
         });
       });
   };
-  console.log(state.message);
   return (
     <div className="App">
       <h1> {state.message} </h1>
       <button onClick={fetchData}>Fetch Data</button>
-      <Test />
     </div>
   );
 }
