@@ -1,4 +1,11 @@
+# Project details
 
+- https://docs.google.com/document/d/1aXkKXD6pdb_SQa6ipdPvIhfF_Ez4RTxTswP4RWHoHkE/edit?usp=sharing
+  Project Description
+- https://docs.google.com/document/d/1tW0vVTAcMBKt8c2ZKyBw7cm8xx6sdBXQil9jx4lSjyI/edit?usp=sharing
+  User stories
+- https://drive.google.com/file/d/1LETAQsMvLmwtVLGVA40w5_prx3ZWJTCM/view?usp=sharing
+  Wireframe model
 
 # React + Rails No-Fluff Boilerplate
 
@@ -7,7 +14,6 @@ A boilerplate project for anyone interested in making a project that uses React 
 Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff.
 
 The main important bit is that the React project has `proxy` set to `localhost:3001` in the `package.json` file. Take a look!
-
 
 ## Using the boilerplate
 
@@ -46,7 +52,9 @@ class Api::TestsController < ApplicationController
 ```
 
 and it lives in the `api` folder! Put all your controllers in there!
+
 ## Joseph Notes
+
 Running Bin exec rake routes seems to update the current routes rather then bin/rake routes
 
 ## Deployment to Heroku
@@ -69,7 +77,7 @@ Once it's deployed, you can run the following commands to manage your app:
 
 There are other commands, but these are good to get you started!
 
-To make your app work properly with React Router (if you end up using it) on Heroku, I've added a special route to the `routes.rb` file (`get '*path' ... `).
+To make your app work properly with React Router (if you end up using it) on Heroku, I've added a special route to the `routes.rb` file (`get '*path' ...`).
 
 ## Contact
 
