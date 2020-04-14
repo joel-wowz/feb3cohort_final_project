@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  menuBar: {
+    backgroundColor: 'rgb(255, 204, 111)',
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -74,7 +77,7 @@ export default function SearchAppBar() {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.menuBar}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
             <MenuIcon />
