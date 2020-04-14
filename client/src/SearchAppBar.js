@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuBar: {
+    //Notes can't use background color hexcode for some reason, so rgb is easier to do then figuring what it do.
+    // create Objects to apply colors to components
     backgroundColor: 'rgb(255, 204, 111)',
   },
   menuButton: {
