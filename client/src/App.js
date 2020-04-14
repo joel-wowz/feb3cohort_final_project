@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import SearchAppBar from './SearchAppBar';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -55,6 +56,7 @@ export default function App(props) {
   return (
     <div className="App">
       <h1> {state.message} </h1>
+      <SearchAppBar />
       <AllRoutes />
       <button onClick={fetchData}>Fetch Data</button>
     </div>
