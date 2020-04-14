@@ -7,7 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # ruby encoding: utf-8
 
-Ingredients.create(:name => 'apple', :weight => 'medium', :volume => 'steady', :matches => 'pork, cinnamon' , :avoid => nil, :flavor=> 'sweet', :techniques => 'roast, bake')
-Ingredients.create(:name => 'pork', :weight => 'heavy', :volume => 'loud', :matches => 'apple, cinnamon' , :avoid => nil, :flavor=> 'porky', :techniques => 'roast, fry, grill')
-Ingredients.create(:name => 'cinnamon', :weight => 'light', :volume => 'quiet', :matches => 'pork, apple' , :avoid => nil, :flavor=> 'spicy, hot', :techniques => 'ground, steep')
-Ingredients.create(:name => 'dill', :weight => 'medium', :volume => 'steady', :matches => 'pork' , :avoid => 'apple', :flavor=> 'earthy, astringent', :techniques => 'raw')
+Ingredient.create!(:name => 'apple', :weight => 'medium', :volume => 'steady', :matches => 'pork, cinnamon' , :avoids => nil, :flavor=> 'sweet', :techniques => 'roast, bake')
+Ingredient.create!(:name => 'pork', :weight => 'heavy', :volume => 'loud', :matches => 'apple, cinnamon' , :avoids => nil, :flavor=> 'porky', :techniques => 'roast, fry, grill')
+Ingredient.create!(:name => 'cinnamon', :weight => 'light', :volume => 'quiet', :matches => 'pork, apple' , :avoids => nil, :flavor=> 'spicy, hot', :techniques => 'ground, steep')
+Ingredient.create!(:name => 'dill', :weight => 'medium', :volume => 'steady', :matches => 'pork' , :avoids => 'apple', :flavor=> 'earthy, astringent', :techniques => 'raw')
+
+# test for duplicate entry
+# Ingredient.create(:name => 'dill', :weight => 'medium', :volume => 'steady', :matches => 'pork' , :avoids => 'apple', :flavor=> 'earthy, astringent', :techniques => 'raw')

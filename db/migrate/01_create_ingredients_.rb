@@ -5,7 +5,7 @@ class CreateIngredients < ActiveRecord::Migration[4.2]
       t.string :volume
       t.string :weight
       t.string :matches
-      t.string :avoids
+      t.string :avoids 
       t.string :techniques
       t.string :flavor
 
