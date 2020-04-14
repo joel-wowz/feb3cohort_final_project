@@ -2,6 +2,39 @@ import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
 
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+const AllRoutes = () => {
+  return (
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="Ingredients">Ingredients</Link>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/Ingredients">
+          <Ingredients />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+  );
+};
+
 export default function App(props) {
   const [ state, setState ] = useState({
     message: 'whats up',
@@ -22,7 +55,30 @@ export default function App(props) {
   return (
     <div className="App">
       <h1> {state.message} </h1>
+      <AllRoutes />
       <button onClick={fetchData}>Fetch Data</button>
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <div>
+      <li> WHATS UP IM HOME</li>
+    </div>
+  );
+}
+function Ingredients() {
+  return (
+    <div>
+      <li>its me your Ingredients Page!</li>
+    </div>
+  );
+}
+function About() {
+  return (
+    <div>
+      <li> I'm just here for testing, not really an about</li>
     </div>
   );
 }
