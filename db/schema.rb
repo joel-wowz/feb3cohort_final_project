@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 1) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredients", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "volume"
+    t.string "weight"
+    t.string "matches"
+    t.string "avoids"
+    t.string "techniques"
+    t.string "flavor"
+  end
 
 end
