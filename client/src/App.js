@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import SearchAppBar from './SearchAppBar';
-
+import IngredientDB from './data/mock-db';
+import SearchResults from './components/SearchResults';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 const AllRoutes = () => {
@@ -36,10 +37,17 @@ const AllRoutes = () => {
   );
 };
 
-export default function App(props) {
+export default function App() {
   const [ state, setState ] = useState({
     message: 'whats up',
   });
+  const [ results, setResults ] = useState(IngredientDB);
+
+  const filterResults = (searchTerm) => {
+    const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
+    setResults(filtered);
+  };
+
   const fetchData = () => {
     axios
       .get('/api/data') // You can simply make your requests to "/api/whatever you want"
@@ -56,7 +64,8 @@ export default function App(props) {
   return (
     <div className="App">
       <h1> {state.message} </h1>
-      <SearchAppBar />
+      <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
+      <SearchResults results={results} />
       <AllRoutes />
       <button onClick={fetchData}>Fetch Data</button>
     </div>
