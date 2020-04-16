@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   root: {
     background: (props) => (props.weight === 'Medium' ? 'Green' : 'Blue'),
+    minWidth: '10%',
+    minHeight: '10vh',
   },
 });
 
@@ -14,7 +16,6 @@ export default function WeightButton(props) {
     <div>
       <Button className={classes.root} {...rest}>
         {' '}
-        {props.children}
       </Button>
     </div>
   );

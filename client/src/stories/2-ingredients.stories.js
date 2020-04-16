@@ -7,7 +7,14 @@ export default {
   component: SimpleExpansionPanel,
 };
 
-export const text = () => <SimpleExpansionPanel buttonColor={IngredientDB[0].weight}> </SimpleExpansionPanel>;
+export const textNoButton = () => <SimpleExpansionPanel buttonColor={IngredientDB[0].weight}> </SimpleExpansionPanel>;
 
-export const button = () => <WeightButton weight={IngredientDB[0].weight}> Artichoke</WeightButton>;
-export const buttonNotColorWeight = () => <WeightButton> Lighter Color</WeightButton>;
+export const button = () => <WeightButton weight={IngredientDB[0].weight} />;
+export const buttonNotColor = () => <WeightButton />;
+
+export const TextWeightButton = () => (
+  <SimpleExpansionPanel>
+    {' '}
+    <WeightButton />
+  </SimpleExpansionPanel>
+);

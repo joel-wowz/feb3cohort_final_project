@@ -25,7 +25,7 @@ export default function SimpleExpansionPanel(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-          <Typography className={classes.heading}>Artichokes</Typography>
+          <Typography className={classes.heading}>Artichokes </Typography> {props.children}
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
