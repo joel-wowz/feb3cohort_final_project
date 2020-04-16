@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -7,7 +7,6 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    display: 'none',
   },
   title: {
     flexGrow: 1,
@@ -73,21 +73,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar(props) {
-  const { onClick } = props;
+export default function SearchAppBar() {
   const classes = useStyles();
-  const [ searchTerm, setSearchTerm ] = useState('');
+
   const IconImage = () => {
     return <img src="https://puu.sh/FxjBE/40abb00f04.png" className={classes.images} />;
   };
-
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.menuBar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
+          <IconButton edge="start" className={classes.menuButton} color="inherit">
             <MenuIcon />
           </IconButton>
+
           <Typography className={classes.title} variant="h6" noWrap />
           <IconImage />
           <div className={classes.search}>
@@ -95,7 +94,6 @@ export default function SearchAppBar(props) {
               <SearchIcon />
             </div>
             <InputBase
-              onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -103,9 +101,7 @@ export default function SearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <Button onClick={() => onClick(searchTerm)}> Search!</Button>
           </div>
-          Hello
         </Toolbar>
       </AppBar>
     </div>
