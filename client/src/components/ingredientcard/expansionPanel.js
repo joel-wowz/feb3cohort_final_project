@@ -5,9 +5,13 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import WeightButton from '../ingredientcard/WeightButton';
+import FlavorTableItem from '../ingredientcard/FlavorTableItem';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -17,31 +21,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleExpansionPanel(props) {
   const classes = useStyles();
-  console.log(`yo whats up my props ${JSON.stringify(props, null, 2)}`);
+  const { weight, description, name, matches } = props;
 
-  const { buttonColor } = props;
-  console.log(buttonColor);
   return (
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-          <Typography className={classes.heading}>Artichokes </Typography> {props.children}
+          <Typography className={classes.heading}>{name}</Typography> {props.children}
+          <WeightButton weight={weight} />
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
+        <ExpansionPanelDetails className={classes.root}>
+          <Typography>{description}</Typography>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
-            leo lobortis eget.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2a-content" id="panel2a-header">
-          <Typography className={classes.heading}>Apples</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
-            leo lobortis eget.
+            <FlavorTableItem matches={matches} />
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

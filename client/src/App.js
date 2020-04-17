@@ -40,9 +40,12 @@ const AllRoutes = () => {
 export default function App() {
   const [ state, setState ] = useState({
     message: 'whats up',
+    results: [],
   });
   const [ results, setResults ] = useState(IngredientDB);
-
+  //when Filter results is ran, return the corresponding Info
+  //Results does exist on the page, but is not rendering properly, when the term is searched for
+  console.log(`whats in results? ${JSON.stringify(results, null, 2)}`);
   const filterResults = (searchTerm) => {
     const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
     setResults(filtered);
@@ -63,10 +66,9 @@ export default function App() {
   };
   return (
     <div className="App">
-      <h1> {state.message} </h1>
       <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
-      <SearchResults results={results} />
-      <AllRoutes />
+      {/*       <SearchResults results={filterResults} />
+ */} {/*   <AllRoutes />  */}
       <button onClick={fetchData}>Fetch Data</button>
     </div>
   );
@@ -80,11 +82,7 @@ function Home() {
   );
 }
 function Ingredients() {
-  return (
-    <div>
-      <li>its me your Ingredients Page!</li>
-    </div>
-  );
+  return <div>Hi</div>;
 }
 function About() {
   return (

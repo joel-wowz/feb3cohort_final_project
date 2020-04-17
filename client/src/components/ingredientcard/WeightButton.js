@@ -3,9 +3,13 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   root: {
-    background: (props) => (props.weight === 'Medium' ? 'Green' : 'Blue'),
-    minWidth: '10%',
-    minHeight: '10vh',
+    background: (props) =>
+      props.weight === 'Heavy'
+        ? 'Blue'
+        : props.weight === 'Medium' ? 'Orange' : props.weight === 'Light' ? 'Red' : 'Purple',
+    minWidth: '9vw',
+    minHeight: '3.2vh',
+    marginLeft: '20px',
   },
 });
 
