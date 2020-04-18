@@ -3,8 +3,9 @@ import './App.css';
 import axios from 'axios';
 import SearchAppBar from './SearchAppBar';
 import IngredientDB from './data/mock-db';
-import SearchResults from './components/SearchResults';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 
 const AllRoutes = () => {
   return (
@@ -40,12 +41,33 @@ const AllRoutes = () => {
 export default function App() {
   const [ state, setState ] = useState({
     message: 'whats up',
+    results: [],
   });
   const [ results, setResults ] = useState(IngredientDB);
-
+  console.log(`results ${results}`);
+  //when Filter results is ran, return the corresponding Info
+  //Results does exist on the page, but is not rendering properly, when the term is searched for
+  function CheckSearch() {
+    if (state.results.length >= 1) {
+      return (
+        <FoodExpansionPanel
+          weight={state.results[0].weight}
+          matches={state.results[0].matches}
+          description={state.results[0].description}
+          name={state.results[0].name}
+        />
+      );
+    }
+    return [];
+  }
   const filterResults = (searchTerm) => {
+    if (searchTerm.length === 0) {
+      return [];
+    }
     const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
-    setResults(filtered);
+    setState({
+      results: filtered,
+    });
   };
 
   const fetchData = () => {
@@ -61,13 +83,15 @@ export default function App() {
         });
       });
   };
+
   return (
     <div className="App">
-      <h1> {state.message} </h1>
       <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
-      <SearchResults results={results} />
-      <AllRoutes />
-      <button onClick={fetchData}>Fetch Data</button>
+      {/*       <SearchResults results={filterResults} />
+
+ */} {/*   <AllRoutes />  */}
+      {/*    <button onClick={fetchData}>Fetch Data</button> */}
+      {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
     </div>
   );
 }
@@ -80,11 +104,7 @@ function Home() {
   );
 }
 function Ingredients() {
-  return (
-    <div>
-      <li>its me your Ingredients Page!</li>
-    </div>
-  );
+  return <div>Hi</div>;
 }
 function About() {
   return (
