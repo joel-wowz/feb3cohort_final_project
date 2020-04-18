@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import WeightButton from './WeightButton';
 import FlavorTableItem from './FlavorTableItem';
+import { AddBox } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -16,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
+  },
+  addIcon: {
+    marginLeft: 'auto',
   },
 }));
 
@@ -29,7 +33,9 @@ export default function FoodExpansionPanel(props) {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
           <Typography className={classes.heading}>{name}</Typography> {props.children}
           <WeightButton weight={weight} />
+          <AddBox className={classes.addIcon} onClick={(e) => console.log(`I have been clicked ${e}`)} />
         </ExpansionPanelSummary>
+
         <ExpansionPanelDetails className={classes.root}>
           <Typography>{description}</Typography>
           <Typography>
