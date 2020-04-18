@@ -3,6 +3,9 @@ import SimpleExpansionPanel from '../components/ingredientcard/FoodExpansionPane
 import IngredientDB from '../data/mock-db';
 import WeightButton from '../components/ingredientcard/WeightButton';
 import FlavorTableItem from '../components/ingredientcard/FlavorTableItem';
+import BottomNavigationBar from '../components/BottomNav/BottomNavigation';
+import App from '../App';
+
 export default {
   title: 'SimpleExpansionPanel',
   component: SimpleExpansionPanel,
@@ -33,3 +36,4 @@ export const TableDefault = () => (
     matches={IngredientDB[0].matches}
   />
 );
+export const HelloDefault = () => <BottomNavigationBar />;

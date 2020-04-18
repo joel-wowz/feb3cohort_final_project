@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   menuBar: {
     //Notes can't use background color hexcode for some reason, so rgb is easier to do then figuring what it do.
     // create Objects to apply colors to components
-    backgroundColor: 'rgb(255, 204, 111)',
+    backgroundColor: 'rgb(255, 138, 80)',
   },
   menuButton: {
     marginRight: theme.spacing(2),

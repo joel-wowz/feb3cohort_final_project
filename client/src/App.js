@@ -44,11 +44,18 @@ export default function App() {
   const [ state, setState ] = useState({
     message: 'whats up',
     results: [],
+    snackBarOpen: false,
   });
   const [ results, setResults ] = useState(IngredientDB);
-  console.log(`results ${results}`);
+
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
+  function snackOpen() {
+    setState({
+      results: [ ...state.results ],
+      snackBarOpen: true,
+    });
+  }
   function CheckSearch() {
     if (state.results.length >= 1) {
       return (
@@ -57,6 +64,7 @@ export default function App() {
           matches={state.results[0].matches}
           description={state.results[0].description}
           name={state.results[0].name}
+          onClick={snackOpen}
         />
       );
     }
@@ -90,9 +98,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
-      {/*       <SearchResults results={filterResults} />
-
- */} {/*   <AllRoutes />  */}
+      {state.snackBarOpen ? 'I am true' : 'i am fasle'}
+      {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
       {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
     </ThemeProvider>
