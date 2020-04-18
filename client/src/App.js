@@ -8,6 +8,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import FoodBar from './components/FoodBar';
 
 const AllRoutes = () => {
   return (
@@ -56,6 +57,12 @@ export default function App() {
       snackBarOpen: true,
     });
   }
+  function snackClose() {
+    setState({
+      results: [ ...state.results ],
+      snackBarOpen: false,
+    });
+  }
   function CheckSearch() {
     if (state.results.length >= 1) {
       return (
@@ -98,7 +105,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
-      {state.snackBarOpen ? 'I am true' : 'i am fasle'}
+      {state.snackBarOpen ? <FoodBar message={state.results[0].name} onClick={snackClose} /> : []}
       {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
       {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}

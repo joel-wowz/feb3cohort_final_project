@@ -4,8 +4,7 @@ import IngredientDB from '../data/mock-db';
 import WeightButton from '../components/ingredientcard/WeightButton';
 import FlavorTableItem from '../components/ingredientcard/FlavorTableItem';
 import BottomNavigationBar from '../components/BottomNav/BottomNavigation';
-import App from '../App';
-
+import FoodBar from '../components/FoodBar';
 export default {
   title: 'SimpleExpansionPanel',
   component: SimpleExpansionPanel,
@@ -37,3 +36,4 @@ export const TableDefault = () => (
   />
 );
 export const HelloDefault = () => <BottomNavigationBar />;
+export const FoodBarDefault = () => <FoodBar message={IngredientDB[0].name} />;
