@@ -76,16 +76,27 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAppBar(props) {
   const { onClick } = props;
   const classes = useStyles();
-  const [ searchTerm, setSearchTerm ] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const IconImage = () => {
-    return <img src="https://puu.sh/FxjBE/40abb00f04.png" className={classes.images} />;
+    return (
+      <img
+        src="https://puu.sh/FxjBE/40abb00f04.png"
+        className={classes.images}
+        alt="some value"
+      />
+    );
   };
 
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.menuBar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="open drawer"
+          >
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap />

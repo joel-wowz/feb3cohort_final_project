@@ -37,14 +37,28 @@ const AllRoutes = () => {
   );
 };
 
+const useStateWithLocalStorage = (localStorageKey) => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem(localStorageKey) || ''
+  );
+  React.useEffect(() => {
+    localStorage.setItem(localStorageKey, value);
+  }, [value]);
+  return [value, setValue];
+};
+
 export default function App() {
-  const [ state, setState ] = useState({
+  const [value, setValue] = useStateWithLocalStorage('myValueInLocalStorage');
+  const [state, setState] = useState({
     message: 'whats up',
   });
-  const [ results, setResults ] = useState(IngredientDB);
+  const [results, setResults] = useState(IngredientDB);
+  const onChange = (event) => setValue(event.target.value);
 
   const filterResults = (searchTerm) => {
-    const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
+    const filtered = IngredientDB.filter((result) =>
+      result.name.includes(searchTerm)
+    );
     setResults(filtered);
   };
 
@@ -67,6 +81,9 @@ export default function App() {
       <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
       <SearchResults results={results} />
       <AllRoutes />
+      <h1>Hello React with Local Storage!</h1>
+      <input value={value} type="text" onChange={onChange} />
+      <p>{value}</p>
       <button onClick={fetchData}>Fetch Data</button>
     </div>
   );
