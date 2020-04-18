@@ -3,9 +3,11 @@ import './App.css';
 import axios from 'axios';
 import SearchAppBar from './SearchAppBar';
 import IngredientDB from './data/mock-db';
-
+import theme from './Theme';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const AllRoutes = () => {
   return (
@@ -85,14 +87,15 @@ export default function App() {
   };
 
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
       {/*       <SearchResults results={filterResults} />
 
  */} {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
       {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
-    </div>
+    </ThemeProvider>
   );
 }
 

@@ -8,6 +8,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
+
 //updated and removed hambuger
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,10 +56,7 @@ const useStyles = makeStyles((theme) => ({
   inputRoot: {
     color: 'inherit',
   },
-  images: {
-    width: '12ch',
-    'padding-right': '37ch',
-  },
+
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -72,15 +70,16 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  icon: {
+    height: '69px',
+  },
 }));
 
 export default function SearchAppBar(props) {
   const classes = useStyles();
   const [ searchTerm, setSearchTerm ] = useState('');
   const { onClick } = props;
-  const IconImage = () => {
-    return <img src="https://puu.sh/FxjBE/40abb00f04.png" className={classes.images} />;
-  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.menuBar}>
@@ -88,9 +87,9 @@ export default function SearchAppBar(props) {
           <IconButton edge="start" className={classes.menuButton} color="inherit">
             <MenuIcon />
           </IconButton>
-
+          <img src="https://puu.sh/FxjBE/40abb00f04.png" className={classes.icon} />
           <Typography className={classes.title} variant="h6" noWrap />
-          <IconImage />
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
