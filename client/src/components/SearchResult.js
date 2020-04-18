@@ -1,12 +1,13 @@
 import React from 'react';
 
 const SearchResult = (props) => {
-  const { result } = props;
+  console.log(`im in search result ${props}`);
+  const { name, weight, matches } = props;
   return (
     <div className="search-result">
-      <h2>{result.name}</h2>
-      <p>{result.volume}</p>
-      <h3>{result.matches.join(', ')}</h3>
+      <h2>{name}</h2>
+      <p>{weight}</p>
+      <h3>{matches}</h3>
     </div>
   );
 };

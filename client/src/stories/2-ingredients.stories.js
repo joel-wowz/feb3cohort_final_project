@@ -1,5 +1,5 @@
 import React from 'react';
-import SimpleExpansionPanel from '../components/ingredientcard/expansionPanel';
+import SimpleExpansionPanel from '../components/ingredientcard/FoodExpansionPanel';
 import IngredientDB from '../data/mock-db';
 import WeightButton from '../components/ingredientcard/WeightButton';
 import FlavorTableItem from '../components/ingredientcard/FlavorTableItem';

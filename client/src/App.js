@@ -3,8 +3,9 @@ import './App.css';
 import axios from 'axios';
 import SearchAppBar from './SearchAppBar';
 import IngredientDB from './data/mock-db';
-import SearchResults from './components/SearchResults';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 
 const AllRoutes = () => {
   return (
@@ -43,12 +44,30 @@ export default function App() {
     results: [],
   });
   const [ results, setResults ] = useState(IngredientDB);
+  console.log(`results ${results}`);
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
-  console.log(`whats in results? ${JSON.stringify(results, null, 2)}`);
+  function CheckSearch() {
+    if (state.results.length >= 1) {
+      return (
+        <FoodExpansionPanel
+          weight={state.results[0].weight}
+          matches={state.results[0].matches}
+          description={state.results[0].description}
+          name={state.results[0].name}
+        />
+      );
+    }
+    return [];
+  }
   const filterResults = (searchTerm) => {
+    if (searchTerm.length === 0) {
+      return [];
+    }
     const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
-    setResults(filtered);
+    setState({
+      results: filtered,
+    });
   };
 
   const fetchData = () => {
@@ -64,12 +83,15 @@ export default function App() {
         });
       });
   };
+
   return (
     <div className="App">
       <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
       {/*       <SearchResults results={filterResults} />
+
  */} {/*   <AllRoutes />  */}
-      <button onClick={fetchData}>Fetch Data</button>
+      {/*    <button onClick={fetchData}>Fetch Data</button> */}
+      {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
     </div>
   );
 }

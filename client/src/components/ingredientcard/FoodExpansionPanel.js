@@ -5,8 +5,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import WeightButton from '../ingredientcard/WeightButton';
-import FlavorTableItem from '../ingredientcard/FlavorTableItem';
+import WeightButton from './WeightButton';
+import FlavorTableItem from './FlavorTableItem';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleExpansionPanel(props) {
+export default function FoodExpansionPanel(props) {
   const classes = useStyles();
   const { weight, description, name, matches } = props;
 
