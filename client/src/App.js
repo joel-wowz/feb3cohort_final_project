@@ -40,14 +40,26 @@ const AllRoutes = () => {
     </Router>
   );
 };
+const useStateWithLocalStorage = (localStorageKey) => {
+  const [ value, setValue ] = React.useState(localStorage.getItem(localStorageKey) || '');
+  React.useEffect(
+    () => {
+      localStorage.setItem(localStorageKey, value);
+    },
+    [ value ],
+  );
+  return [ value, setValue ];
+};
 
 export default function App() {
+  const [ value, setValue ] = useStateWithLocalStorage('myValueInLocalStorage');
   const [ state, setState ] = useState({
     message: 'whats up',
-    results: [],
+    results: {},
     snackBarOpen: false,
   });
-  const [ results, setResults ] = useState(IngredientDB);
+
+  const onChange = (event) => setValue(event);
 
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
@@ -64,7 +76,7 @@ export default function App() {
     });
   }
   function CheckSearch() {
-    if (state.results.length >= 1) {
+    if (state.results.length === 1) {
       return (
         <FoodExpansionPanel
           weight={state.results[0].weight}
@@ -83,7 +95,7 @@ export default function App() {
     }
     const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
     setState({
-      results: filtered,
+      results: [ ...filtered ],
     });
   };
 
@@ -104,11 +116,15 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
-      {state.snackBarOpen ? <FoodBar message={state.results[0].name} onClick={snackClose} /> : []}
-      {/*   <AllRoutes />  */}
+      <SearchAppBar onSubmit={onChange} onClick={filterResults} />
+      {/*       <SearchResults results={filterResults} />
+
+      
+
+ */} {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
       {<CheckSearch />}
+      {!state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackClose} />}
     </ThemeProvider>
   );
 }
