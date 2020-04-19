@@ -108,7 +108,7 @@ export default function App() {
       {state.snackBarOpen ? <FoodBar message={state.results[0].name} onClick={snackClose} /> : []}
       {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
-      {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
+      {<CheckSearch />}
     </ThemeProvider>
   );
 }
