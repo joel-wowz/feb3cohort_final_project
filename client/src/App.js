@@ -39,8 +39,19 @@ const AllRoutes = () => {
     </Router>
   );
 };
+const useStateWithLocalStorage = (localStorageKey) => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem(localStorageKey) || ''
+  );
+  React.useEffect(() => {
+    localStorage.setItem(localStorageKey, value);
+  }, [value]);
+  return [value, setValue];
+};
 
 export default function App() {
+  const [value, setValue] = useStateWithLocalStorage('myValueInLocalStorage');
+  const onChange = (event) => setValue(event.target.results);
   const [state, setState] = useState({
     message: 'whats up',
     results: [],
@@ -91,7 +102,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
+      <SearchAppBar onClick={filterResults} />
       {/*       <SearchResults results={filterResults} />
 
  */}{' '}
