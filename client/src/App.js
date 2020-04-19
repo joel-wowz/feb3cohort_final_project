@@ -41,11 +41,11 @@ const AllRoutes = () => {
 };
 
 export default function App() {
-  const [ state, setState ] = useState({
+  const [state, setState] = useState({
     message: 'whats up',
     results: [],
   });
-  const [ results, setResults ] = useState(IngredientDB);
+  const [results, setResults] = useState(IngredientDB);
   console.log(`results ${results}`);
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
@@ -66,7 +66,9 @@ export default function App() {
     if (searchTerm.length === 0) {
       return [];
     }
-    const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
+    const filtered = IngredientDB.filter((result) =>
+      result.name.includes(searchTerm)
+    );
     setState({
       results: filtered,
     });
@@ -92,7 +94,8 @@ export default function App() {
       <SearchAppBar onClick={(searchTerm) => filterResults(searchTerm)} />
       {/*       <SearchResults results={filterResults} />
 
- */} {/*   <AllRoutes />  */}
+ */}{' '}
+      {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
       {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
     </ThemeProvider>
