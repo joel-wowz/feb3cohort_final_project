@@ -52,17 +52,18 @@ const useStateWithLocalStorage = (localStorageKey) => {
 
 export default function App() {
   const [ value, setValue ] = useStateWithLocalStorage('myValueInLocalStorage');
-  const onChange = (event) => setValue(event);
   const [ state, setState ] = useState({
     message: 'whats up',
-    results: [],
+    results: {},
   });
-  const [ results, setResults ] = useState(IngredientDB);
+  const onChange = (event) => setValue(event);
+
+  console.log(`results length ${state.results.length}`);
 
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
   function CheckSearch() {
-    if (state.results.length >= 1) {
+    if (state.results.length === 1) {
       return (
         <FoodExpansionPanel
           weight={state.results[0].weight}
@@ -80,7 +81,7 @@ export default function App() {
     }
     const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
     setState({
-      results: filtered,
+      results: [ ...filtered ],
     });
   };
 
@@ -106,7 +107,7 @@ export default function App() {
 
  */} {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
-      {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
+      {<CheckSearch />}
     </ThemeProvider>
   );
 }
