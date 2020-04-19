@@ -77,25 +77,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchAppBar(props) {
   const classes = useStyles();
-  const [searchTerm, setSearchTerm] = useState('');
-  const { onClick } = props;
+  const [ searchTerm, setSearchTerm ] = useState('');
+  const { onClick, onChange } = props;
 
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.menuBar}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-          >
+          <IconButton edge="start" className={classes.menuButton} color="inherit">
             <MenuIcon />
           </IconButton>
-          <img
-            src="https://puu.sh/FxjBE/40abb00f04.png"
-            className={classes.icon}
-            alt="some text"
-          />
+          <img src="https://puu.sh/FxjBE/40abb00f04.png" className={classes.icon} alt="some text" />
           <Typography className={classes.title} variant="h6" noWrap />
 
           <div className={classes.search}>
@@ -111,7 +103,10 @@ export default function SearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <Button onClick={() => onClick(searchTerm)}> Search </Button>
+            <Button onSubmit={() => onChange(searchTerm)} onClick={() => onClick(searchTerm)}>
+              {' '}
+              Search{' '}
+            </Button>
           </div>
         </Toolbar>
       </AppBar>

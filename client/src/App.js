@@ -40,24 +40,25 @@ const AllRoutes = () => {
   );
 };
 const useStateWithLocalStorage = (localStorageKey) => {
-  const [value, setValue] = React.useState(
-    localStorage.getItem(localStorageKey) || ''
+  const [ value, setValue ] = React.useState(localStorage.getItem(localStorageKey) || '');
+  React.useEffect(
+    () => {
+      localStorage.setItem(localStorageKey, value);
+    },
+    [ value ],
   );
-  React.useEffect(() => {
-    localStorage.setItem(localStorageKey, value);
-  }, [value]);
-  return [value, setValue];
+  return [ value, setValue ];
 };
 
 export default function App() {
-  const [value, setValue] = useStateWithLocalStorage('myValueInLocalStorage');
+  const [ value, setValue ] = useStateWithLocalStorage('myValueInLocalStorage');
   const onChange = (event) => setValue(event.target.results);
-  const [state, setState] = useState({
+  const [ state, setState ] = useState({
     message: 'whats up',
     results: [],
   });
-  const [results, setResults] = useState(IngredientDB);
-  console.log(`results ${results}`);
+  const [ results, setResults ] = useState(IngredientDB);
+
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
   function CheckSearch() {
@@ -77,9 +78,7 @@ export default function App() {
     if (searchTerm.length === 0) {
       return [];
     }
-    const filtered = IngredientDB.filter((result) =>
-      result.name.includes(searchTerm)
-    );
+    const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
     setState({
       results: filtered,
     });
@@ -102,11 +101,10 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SearchAppBar onClick={filterResults} />
+      <SearchAppBar onSubmit={onChange} onClick={filterResults} />
       {/*       <SearchResults results={filterResults} />
 
- */}{' '}
-      {/*   <AllRoutes />  */}
+ */} {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
       {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
     </ThemeProvider>
