@@ -52,7 +52,7 @@ const useStateWithLocalStorage = (localStorageKey) => {
 
 export default function App() {
   const [ value, setValue ] = useStateWithLocalStorage('myValueInLocalStorage');
-  const onChange = (event) => setValue(event.target.results);
+  const onChange = (event) => setValue(event);
   const [ state, setState ] = useState({
     message: 'whats up',
     results: [],
