@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import './App.css';
-import axios from 'axios';
-import SearchAppBar from './SearchAppBar';
-import IngredientDB from './data/mock-db';
-import theme from './Theme';
-import { ThemeProvider } from '@material-ui/core/styles';
-/* import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'; */
+import React from 'react';
 import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
+
+import './App.css';
+import SearchAppBar from './SearchAppBar';
+import theme from './Theme';
+import useApplicationData from './hooks/useApplicationData';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FoodBar from './components/FoodBar';
-import store from 'store';
 
 /* const AllRoutes = () => {
   return (
@@ -40,29 +39,11 @@ import store from 'store';
       </Switch>
     </Router>
   );
-}; */
-
+};
+ */
 export default function App() {
-  const [ state, setState ] = useState({
-    value: [],
-    results: [],
-    snackBarOpen: false,
-  });
+  const { state, snackClose, filterResults, snackOpen } = useApplicationData();
 
-  //when Filter results is ran, return the corresponding Info
-  //Results does exist on the page, but is not rendering properly, when the term is searched for
-  function snackOpen() {
-    setState({
-      results: [ ...state.results ],
-      snackBarOpen: true,
-    });
-  }
-  function snackClose() {
-    setState({
-      results: [ ...state.results ],
-      snackBarOpen: false,
-    });
-  }
   function CheckSearch() {
     if (state.results.length === 1) {
       return (
@@ -77,31 +58,6 @@ export default function App() {
     }
     return [];
   }
-  const filterResults = (searchTerm) => {
-    if (searchTerm.length === 0) {
-      return [];
-    }
-    const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
-    setState({
-      value: [ ...state.value, filtered ],
-      results: [ ...filtered ],
-    });
-    store.set('LocalAppStorage', { searchTerm, ...state.value });
-  };
-
-  const fetchData = () => {
-    axios
-      .get('/api/data') // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
-        // handle success
-        console.log(response.data); // The entire response from the Rails API
-
-        console.log(response.data.message); // Just the message
-        setState({
-          message: response.data.message,
-        });
-      });
-  };
 
   return (
     <ThemeProvider theme={theme}>
