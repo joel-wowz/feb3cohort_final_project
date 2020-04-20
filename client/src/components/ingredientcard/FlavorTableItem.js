@@ -23,7 +23,7 @@ export default function FlavorTableItem(props) {
 
   return (
     <List className={classes.root}>
-      <ListItem disableGutters="true">
+      <ListItem disableGutters={true}>
         <ListItemText secondary={flavorDescription} />
       </ListItem>
       <FlavorChip matches={matches} />

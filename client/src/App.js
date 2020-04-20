@@ -8,6 +8,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import FoodBar from './components/FoodBar';
 
 const AllRoutes = () => {
   return (
@@ -41,58 +42,38 @@ const AllRoutes = () => {
 };
 
 export default function App() {
+  const [value, setValue] = useStateWithLocalStorage('myValueInLocalStorage');
   const [state, setState] = useState({
     message: 'whats up',
-    results: [],
+    results: {},
+    snackBarOpen: false,
   });
-  const [results, setResults] = useState(IngredientDB);
-  const [value, setValue] = useLocalStorage('value', '');
+
+  const onChange = (event) => setValue(event);
 
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
-  function useLocalStorage(key, initialValue) {
-    // State to store our value
-    // Pass initial state function to useState so logic is only executed once
-    const [storedValue, setStoredValue] = useState(() => {
-      try {
-        // Get from local storage by key
-        const item = window.localStorage.getItem(key);
-        // Parse stored json or if none return initialValue
-        return item ? JSON.parse(item) : initialValue;
-      } catch (error) {
-        // If error also return initialValue
-        console.log(error);
-        return initialValue;
-      }
+  function snackOpen() {
+    setState({
+      results: [...state.results],
+      snackBarOpen: true,
     });
-
-    // Return a wrapped version of useState's setter function that ...
-    // ... persists the new value to localStorage.
-    const setValue = (value) => {
-      try {
-        // Allow value to be a function so we have same API as useState
-        const valueToStore =
-          value instanceof Function ? value(storedValue) : value;
-        // Save state
-        setStoredValue(valueToStore);
-        // Save to local storage
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
-      } catch (error) {
-        // A more advanced implementation would handle the error case
-        console.log(error);
-      }
-    };
-
-    return [storedValue, setValue];
+  }
+  function snackClose() {
+    setState({
+      results: [...state.results],
+      snackBarOpen: false,
+    });
   }
   function CheckSearch() {
-    if (state.results.length >= 1) {
+    if (state.results.length === 1) {
       return (
         <FoodExpansionPanel
           weight={state.results[0].weight}
           matches={state.results[0].matches}
           description={state.results[0].description}
           name={state.results[0].name}
+          onClick={snackOpen}
         />
       );
     }
@@ -106,7 +87,7 @@ export default function App() {
       result.name.includes(searchTerm)
     );
     setState({
-      results: filtered,
+      results: [...filtered],
     });
   };
 
@@ -130,10 +111,17 @@ export default function App() {
       <SearchAppBar onSubmit={(e) => setValue(e)} onClick={filterResults} />
       {/*       <SearchResults results={filterResults} />
 
+      
+
  */}{' '}
       {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
-      {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
+      {<CheckSearch />}
+      {!state.snackBarOpen ? (
+        []
+      ) : (
+        <FoodBar message={state.results[0].name} onClick={snackClose} />
+      )}
     </ThemeProvider>
   );
 }
