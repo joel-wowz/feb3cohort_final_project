@@ -25,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FoodExpansionPanel(props) {
   const classes = useStyles();
+  const errorCheck = JSON.stringify(props, null, 2);
+  console.log(`errorCheck ${errorCheck}`);
   const { weight, description, name, matches, onClick } = props;
-
   return (
     <div className={classes.root}>
       <ExpansionPanel>

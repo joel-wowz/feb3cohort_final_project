@@ -78,11 +78,10 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAppBar(props) {
   const classes = useStyles();
   const [ searchTerm, setSearchTerm ] = useState('');
-  const { onClick, onSubmit } = props;
-  function searchGo(e) {
-    setSearchTerm(e.target.value);
+  const { onClick } = props;
+  function onClickHandler(e) {
+    onClick(e);
   }
-
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.menuBar}>
@@ -98,7 +97,7 @@ export default function SearchAppBar(props) {
               <SearchIcon />
             </div>
             <InputBase
-              onChange={searchGo}
+              onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -106,10 +105,7 @@ export default function SearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <Button onSubmit={onSubmit(searchTerm)} onClick={() => onClick(searchTerm)}>
-              {' '}
-              Search{' '}
-            </Button>
+            <Button onClick={() => onClickHandler(searchTerm)}>Search</Button>
           </div>
         </Toolbar>
       </AppBar>

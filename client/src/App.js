@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FoodBar from './components/FoodBar';
+import store from 'store';
 
 const AllRoutes = () => {
   return (
@@ -40,26 +41,13 @@ const AllRoutes = () => {
     </Router>
   );
 };
-const useStateWithLocalStorage = (localStorageKey) => {
-  const [ value, setValue ] = React.useState(localStorage.getItem(localStorageKey) || '');
-  React.useEffect(
-    () => {
-      localStorage.setItem(localStorageKey, value);
-    },
-    [ value ],
-  );
-  return [ value, setValue ];
-};
 
 export default function App() {
-  const [ value, setValue ] = useStateWithLocalStorage('myValueInLocalStorage');
   const [ state, setState ] = useState({
-    message: 'whats up',
-    results: {},
+    value: [],
+    results: [],
     snackBarOpen: false,
   });
-
-  const onChange = (event) => setValue(event);
 
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
@@ -95,8 +83,10 @@ export default function App() {
     }
     const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
     setState({
+      value: [ ...state.value, filtered ],
       results: [ ...filtered ],
     });
+    store.set('LocalAppStorage', { searchTerm, ...state.value });
   };
 
   const fetchData = () => {
@@ -116,7 +106,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SearchAppBar onSubmit={onChange} onClick={filterResults} />
+      <SearchAppBar onClick={filterResults} />
       {/*       <SearchResults results={filterResults} />
 
       

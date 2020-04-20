@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function FlavorTableItem(props) {
   const { flavorDescription, matches } = props;
+
   const classes = useStyles();
 
   return (
