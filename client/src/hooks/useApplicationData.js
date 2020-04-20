@@ -7,7 +7,7 @@ import IngredientDB from '../data/mock-db';
 export default function useApplicationData() {
   const [ state, setState ] = useState({
     value: [],
-    results: [],
+    results: {},
     snackBarOpen: false,
   });
 
@@ -15,14 +15,14 @@ export default function useApplicationData() {
   //Results does exist on the page, but is not rendering properly, when the term is searched for
   function snackOpen() {
     setState({
-      results: [ ...state.results ],
+      ...state,
       snackBarOpen: true,
     });
   }
 
   function snackClose() {
     setState({
-      results: [ ...state.results ],
+      ...state,
       snackBarOpen: false,
     });
   }
@@ -36,7 +36,7 @@ export default function useApplicationData() {
       value: [ ...state.value, filtered ],
       results: [ ...filtered ],
     });
-    store.set('LocalAppStorage', { searchTerm, ...state.value });
+    store.set('LocalAppStorage', { filtered, ...state.value });
   };
   return { state, filterResults, snackOpen, snackClose };
 }

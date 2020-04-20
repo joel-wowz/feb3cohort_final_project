@@ -58,6 +58,7 @@ export default function App() {
     }
     return [];
   }
+  console.log(state);
 
   return (
     <ThemeProvider theme={theme}>
