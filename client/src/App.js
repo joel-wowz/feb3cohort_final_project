@@ -39,28 +39,52 @@ const AllRoutes = () => {
     </Router>
   );
 };
-const useStateWithLocalStorage = (localStorageKey) => {
-  const [ value, setValue ] = React.useState(localStorage.getItem(localStorageKey) || '');
-  React.useEffect(
-    () => {
-      localStorage.setItem(localStorageKey, value);
-    },
-    [ value ],
-  );
-  return [ value, setValue ];
-};
 
 export default function App() {
-  const [ value, setValue ] = useStateWithLocalStorage('myValueInLocalStorage');
-  const onChange = (event) => setValue(event);
-  const [ state, setState ] = useState({
+  const [state, setState] = useState({
     message: 'whats up',
     results: [],
   });
-  const [ results, setResults ] = useState(IngredientDB);
+  const [results, setResults] = useState(IngredientDB);
+  const [value, setValue] = useLocalStorage('value', '');
 
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
+  function useLocalStorage(key, initialValue) {
+    // State to store our value
+    // Pass initial state function to useState so logic is only executed once
+    const [storedValue, setStoredValue] = useState(() => {
+      try {
+        // Get from local storage by key
+        const item = window.localStorage.getItem(key);
+        // Parse stored json or if none return initialValue
+        return item ? JSON.parse(item) : initialValue;
+      } catch (error) {
+        // If error also return initialValue
+        console.log(error);
+        return initialValue;
+      }
+    });
+
+    // Return a wrapped version of useState's setter function that ...
+    // ... persists the new value to localStorage.
+    const setValue = (value) => {
+      try {
+        // Allow value to be a function so we have same API as useState
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value;
+        // Save state
+        setStoredValue(valueToStore);
+        // Save to local storage
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch (error) {
+        // A more advanced implementation would handle the error case
+        console.log(error);
+      }
+    };
+
+    return [storedValue, setValue];
+  }
   function CheckSearch() {
     if (state.results.length >= 1) {
       return (
@@ -78,7 +102,9 @@ export default function App() {
     if (searchTerm.length === 0) {
       return [];
     }
-    const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
+    const filtered = IngredientDB.filter((result) =>
+      result.name.includes(searchTerm)
+    );
     setState({
       results: filtered,
     });
@@ -101,10 +127,11 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SearchAppBar onSubmit={onChange} onClick={filterResults} />
+      <SearchAppBar onSubmit={(e) => setValue(e)} onClick={filterResults} />
       {/*       <SearchResults results={filterResults} />
 
- */} {/*   <AllRoutes />  */}
+ */}{' '}
+      {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
       {results[0].length !== 0 ? <CheckSearch /> : 'this is false'}
     </ThemeProvider>
