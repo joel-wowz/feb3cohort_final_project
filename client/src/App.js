@@ -5,13 +5,13 @@ import SearchAppBar from './SearchAppBar';
 import IngredientDB from './data/mock-db';
 import theme from './Theme';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+/* import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'; */
 import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FoodBar from './components/FoodBar';
 import store from 'store';
 
-const AllRoutes = () => {
+/* const AllRoutes = () => {
   return (
     <Router>
       <nav>
@@ -40,7 +40,7 @@ const AllRoutes = () => {
       </Switch>
     </Router>
   );
-};
+}; */
 
 export default function App() {
   const [ state, setState ] = useState({
@@ -119,7 +119,7 @@ export default function App() {
   );
 }
 
-function Home() {
+/* function Home() {
   return (
     <div>
       <li> WHATS UP IM HOME</li>
@@ -135,4 +135,4 @@ function About() {
       <li> I'm just here for testing, not really an about</li>
     </div>
   );
-}
+} */
