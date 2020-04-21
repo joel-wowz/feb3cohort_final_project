@@ -13,10 +13,10 @@ Ingredient.select(:technique).where("name ilike ?", "%#{search}%")
 Ingredient.select(:weight).where("name ilike ?", "%#{search}%")
 Ingredient.select(:volume).where("name ilike ?", "%#{search}%")
 Ingredient.select(:flavor).where("name ilike ?", "%#{search}%")
-Ingredient.select(:name).where("name ilike ?", "%#{search.gsub(/s/$/,"")}%")
+Ingredient.select(:name).where("name ilike ?", "%#{seach.gsub(/s/\$/,"")}%")
 
 EXAMPLE:
-Ingredient.select(:name).where("name ilike ?", "%#{'apples'.gsub(/s$/,"")}%")
+Ingredient.select(:name).where("name ilike ?", "%#{'apples'.gsub(/s\$/,"")}%")
 
 query string parameter
 GET request to api

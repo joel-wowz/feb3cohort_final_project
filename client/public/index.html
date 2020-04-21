@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -37,5 +38,26 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      $(document).ready(function () {
+        $('button').click(function (event) {
+          event.preventDefault();
+          $.ajax({
+            type: 'GET',
+            url: 'http://localhost:3000/api/',
+            data: 'apple',
+            success: function (data) {
+              $('#result').html(data);
+            },
+          });
+        });
+      });
+    </script>
+    <div id="result">
+      <h2>
+        Content of the result DIV box will be replaced by selected ingredient
+      </h2>
+    </div>
+    <button type="button">Load ingredient</button>
   </body>
 </html>

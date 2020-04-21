@@ -8,6 +8,7 @@ def create
   end
 
 def show
+  @search = Ingredient.select(:name).where("name ilike ?", "%#{apple.gsub(/s/$/,"")}%")
   end
 
 def change
