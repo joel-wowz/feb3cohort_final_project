@@ -74,17 +74,3 @@ export default function App() {
     </ThemeProvider>
   );
 }
-
-function Ingredients() {
-  const { handleClick, history } = HistoryFunctions();
-  console.log(history);
-
-  return (
-    <div>
-      Hi
-      <Button onClick={handleClick.GoForward}> LOVE FUCKING COCKS OH BABY</Button>
-    </div>
-  );
-}
-
-export { Ingredients };
