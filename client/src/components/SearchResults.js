@@ -6,7 +6,13 @@ const SearchResults = (props) => {
   const result = () => {
     return (
       <div>
-        <SearchResult name={results.name} weight={results.weight} matches={results.matches} />
+        <SearchResult
+          name={results.name}
+          weight={results.weight}
+          techniques={results.techniques}
+          volume={results.volume}
+          matches={results.matches}
+        />
       </div>
     );
   };

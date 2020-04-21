@@ -1,7 +1,7 @@
 module Api
     class IngredientsController < ApplicationController
-      def show 
-        @search = Ingredient.select(:name).where("name ilike ?", "%#{apple.gsub(/s/$/,"")}%")
+      def index 
+        @search = Ingredient.select(:name).where("name ilike ?", "%?.gsub(/s/$/,"")%")
         
       end
     

@@ -44,10 +44,13 @@
           event.preventDefault();
           $.ajax({
             type: 'GET',
-            url: 'http://localhost:3000/api/',
+            url: 'http://localhost:3000/api/ingredients/',
             data: 'apple',
             success: function (data) {
               $('#result').html(data);
+            },
+            error: function (data) {
+              console.log(data);
             },
           });
         });
