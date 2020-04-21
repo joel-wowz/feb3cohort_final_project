@@ -13,7 +13,18 @@ export default function useApplicationData() {
 
   //when Filter results is ran, return the corresponding Info
   //Results does exist on the page, but is not rendering properly, when the term is searched for
-  function snackOpen() {
+  function snackHandler(bool = false) {
+    return bool
+      ? setState({
+          ...state,
+          snackBarOpen: true,
+        })
+      : setState({
+          ...state,
+          snackBarOpen: false,
+        });
+  }
+  /*  function snackOpen() {
     setState({
       ...state,
       snackBarOpen: true,
@@ -25,7 +36,7 @@ export default function useApplicationData() {
       ...state,
       snackBarOpen: false,
     });
-  }
+  } */
 
   const filterResults = (searchTerm) => {
     if (searchTerm.length === 0) {
@@ -38,5 +49,5 @@ export default function useApplicationData() {
     });
     store.set('LocalAppStorage', { filtered, ...state.value });
   };
-  return { state, filterResults, snackOpen, snackClose };
+  return { state, filterResults, snackHandler };
 }

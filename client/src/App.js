@@ -42,7 +42,7 @@ import FoodBar from './components/FoodBar';
 };
  */
 export default function App() {
-  const { state, snackClose, filterResults, snackOpen } = useApplicationData();
+  const { state, filterResults, snackHandler } = useApplicationData();
 
   function CheckSearch() {
     if (state.results.length === 1) {
@@ -52,13 +52,12 @@ export default function App() {
           matches={state.results[0].matches}
           description={state.results[0].description}
           name={state.results[0].name}
-          onClick={snackOpen}
+          onClick={snackHandler}
         />
       );
     }
     return [];
   }
-  console.log(state);
 
   return (
     <ThemeProvider theme={theme}>
@@ -71,7 +70,7 @@ export default function App() {
  */} {/*   <AllRoutes />  */}
       {/*    <button onClick={fetchData}>Fetch Data</button> */}
       {<CheckSearch />}
-      {!state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackClose} />}
+      {!state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackHandler} />}
     </ThemeProvider>
   );
 }
