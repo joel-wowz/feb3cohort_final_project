@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import useApplicationData from '../../hooks/useApplicationData';
+import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -15,12 +15,11 @@ const useStyles = makeStyles({
 });
 
 export default function BottomNavigationBar() {
-  const { state } = useApplicationData();
   const classes = useStyles();
 
   return (
     <BottomNavigation icon={<HomeSharp />} showLabels className={classes.root}>
-      <BottomNavigationAction label="Home" icon={<HomeSharp onClick={(e) => console.log('WHATS UP HOMIE')} />} />
+      <BottomNavigationAction label="Home" icon={<HomeSharp onClick={(e) => console.log('this works hey neat!')} />} />
     </BottomNavigation>
   );
 }

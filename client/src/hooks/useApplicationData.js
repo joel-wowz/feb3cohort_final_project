@@ -3,7 +3,7 @@ import store from 'store';
 import IngredientDB from '../data/mock-db';
 /* import axios from 'axios'; */
 //gonna be needing these soon
-import HistoryFunctions from './HistoryFunctions';
+/* import HistoryFunctions from './HistoryFunctions'; */
 export default function useApplicationData() {
   const [ state, setState ] = useState({
     value: [],

@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 import './App.css';
 import SearchAppBar from './SearchAppBar';
 import theme from './Theme';
-import { HistoryFunctions, useApplicationData } from './hooks/index';
+import { useApplicationData } from './hooks/index';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FoodBar from './components/FoodBar';
@@ -49,8 +49,7 @@ export default function App() {
       return (
         <FoodExpansionPanel
           weight={state.results[0].weight}
-          matches={state.results[0].matches}
-          dislikes={state.results[0].dislikes}
+          matches={state.results[0].primary_matches}
           description={state.results[0].description}
           name={state.results[0].name}
           onClick={snackHandler}
