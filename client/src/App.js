@@ -65,7 +65,7 @@ export default function App() {
       <CssBaseline />
       <SearchAppBar onClick={filterResults} />
       <CheckSearch />
-      {<SnackCondition />}
+      <SnackCondition />
     </ThemeProvider>
   );
 }
