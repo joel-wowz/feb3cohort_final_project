@@ -1,6 +1,5 @@
 import React from 'react';
 import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
-
 import './App.css';
 import SearchAppBar from './SearchAppBar';
 import theme from './Theme';
@@ -58,19 +57,15 @@ export default function App() {
     }
     return [];
   }
-
+  function SnackCondition() {
+    return !state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackHandler} />;
+  }
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <SearchAppBar onClick={filterResults} />
-      {/*       <SearchResults results={filterResults} />
-
-      
-
- */} {/*   <AllRoutes />  */}
-      {/*    <button onClick={fetchData}>Fetch Data</button> */}
-      {<CheckSearch />}
-      {!state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackHandler} />}
+      <CheckSearch />
+      {<SnackCondition />}
     </ThemeProvider>
   );
 }
