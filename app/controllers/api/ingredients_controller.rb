@@ -1,10 +1,13 @@
 module Api
     class IngredientsController < ApplicationController
       def show
-        Ingredient.find_by_id(params[:id])  
+        @ingredient = Ingredient.find(params[:id])
+        render :json => {
+        message: @ingredient }
+        
       end
       def index
-        Ingredient.find_by_id(params[:id])  
+        Ingredient.all 
       end
     end
 end
