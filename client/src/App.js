@@ -3,11 +3,11 @@ import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 import './App.css';
 import SearchAppBar from './SearchAppBar';
 import theme from './Theme';
-import useApplicationData from './hooks/useApplicationData';
+import { useApplicationData } from './hooks/index';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FoodBar from './components/FoodBar';
+import BottomNavigation from '../src/components/BottomNav/BottomNavigation';
 
 /* const AllRoutes = () => {
   return (
@@ -40,15 +40,16 @@ import FoodBar from './components/FoodBar';
   );
 };
  */
-export default function App() {
-  const { state, filterResults, snackHandler } = useApplicationData();
 
+export default function App() {
+  const { state, snackHandler, resultWrapper } = useApplicationData();
+  const { filterResults } = resultWrapper();
   function CheckSearch() {
     if (state.results.length === 1) {
       return (
         <FoodExpansionPanel
           weight={state.results[0].weight}
-          matches={state.results[0].matches}
+          matches={state.results[0].primary_matches}
           description={state.results[0].description}
           name={state.results[0].name}
           onClick={snackHandler}
@@ -57,33 +58,18 @@ export default function App() {
     }
     return [];
   }
+
   function SnackCondition() {
     return !state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackHandler} />;
   }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <SearchAppBar onClick={filterResults} />
       <CheckSearch />
       <SnackCondition />
+      <BottomNavigation />
     </ThemeProvider>
   );
 }
-
-/* function Home() {
-  return (
-    <div>
-      <li> WHATS UP IM HOME</li>
-    </div>
-  );
-}
-function Ingredients() {
-  return <div>Hi</div>;
-}
-function About() {
-  return (
-    <div>
-      <li> I'm just here for testing, not really an about</li>
-    </div>
-  );
-} */

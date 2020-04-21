@@ -3,12 +3,13 @@ import store from 'store';
 import IngredientDB from '../data/mock-db';
 /* import axios from 'axios'; */
 //gonna be needing these soon
-
+/* import HistoryFunctions from './HistoryFunctions'; */
 export default function useApplicationData() {
   const [ state, setState ] = useState({
     value: [],
     results: {},
     snackBarOpen: false,
+    history: [],
   });
 
   //when Filter results is ran, return the corresponding Info
@@ -24,30 +25,21 @@ export default function useApplicationData() {
           snackBarOpen: false,
         });
   }
-  /*  function snackOpen() {
-    setState({
-      ...state,
-      snackBarOpen: true,
-    });
+
+  function resultWrapper() {
+    const filterResults = (searchTerm) => {
+      if (searchTerm.length === 0) {
+        return [];
+      }
+      const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
+      setState({
+        value: [ ...state.value, filtered ],
+        results: [ ...filtered ],
+      });
+      store.set('LocalAppStorage', { filtered, ...state.value });
+    };
+
+    return { filterResults };
   }
-
-  function snackClose() {
-    setState({
-      ...state,
-      snackBarOpen: false,
-    });
-  } */
-
-  const filterResults = (searchTerm) => {
-    if (searchTerm.length === 0) {
-      return [];
-    }
-    const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
-    setState({
-      value: [ ...state.value, filtered ],
-      results: [ ...filtered ],
-    });
-    store.set('LocalAppStorage', { filtered, ...state.value });
-  };
-  return { state, filterResults, snackHandler };
+  return { state, resultWrapper, snackHandler };
 }

@@ -79,9 +79,7 @@ export default function SearchAppBar(props) {
   const classes = useStyles();
   const [searchTerm, setSearchTerm] = useState('');
   const { onClick } = props;
-  function onClickHandler(e) {
-    onClick(e);
-  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.menuBar}>
@@ -115,7 +113,7 @@ export default function SearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <Button onClick={() => onClickHandler(searchTerm)}>Search</Button>
+            <Button onClick={() => onClick(searchTerm)}>Search</Button>
           </div>
         </Toolbar>
       </AppBar>
