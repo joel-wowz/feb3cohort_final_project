@@ -26,14 +26,16 @@ const useStyles = makeStyles((theme) => ({
 export default function FoodExpansionPanel(props) {
   const classes = useStyles();
   const { weight, description, name, matches, onClick } = props;
-
+  function snackTrue() {
+    onClick(true);
+  }
   return (
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
           <Typography className={classes.heading}>{name}</Typography> {props.children}
           <WeightButton weight={weight} />
-          <AddBox className={classes.addIcon} onClick={onClick} />
+          <AddBox className={classes.addIcon} onClick={snackTrue} />
         </ExpansionPanelSummary>
 
         <ExpansionPanelDetails className={classes.root}>

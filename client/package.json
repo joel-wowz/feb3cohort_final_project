@@ -9,7 +9,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "store": "^2.0.12"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,7 +23,12 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [ ">0.2%", "not dead", "not ie <= 11", "not op_mini all" ],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "proxy": "http://localhost:3001",
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.18",
