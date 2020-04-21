@@ -8,11 +8,10 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FoodBar from './components/FoodBar';
 import { Button } from '@material-ui/core';
-import IngredientDB from './data/mock-db';
 
 export default function App() {
-  const { handleClick, history } = HistoryFunctions();
-  const { state, filterResults, snackHandler } = useApplicationData();
+  const { state, snackHandler, resultWrapper } = useApplicationData();
+  const { filterResults } = resultWrapper();
   function CheckSearch() {
     if (state.results.length === 1) {
       return (
@@ -27,9 +26,10 @@ export default function App() {
     }
     return [];
   }
-  function IngredientSearch(e) {
+  /*   function IngredientSearch(e) {
     handleClick.GoForward(e);
-  }
+  } */
+
   function SnackCondition() {
     return !state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackHandler} />;
   }
@@ -37,7 +37,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SearchAppBar onClick={IngredientSearch} />
+      <SearchAppBar onClick={filterResults} />
       <CheckSearch />
       <SnackCondition />
     </ThemeProvider>
