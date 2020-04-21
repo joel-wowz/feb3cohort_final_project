@@ -24,19 +24,6 @@ export default function useApplicationData() {
           snackBarOpen: false,
         });
   }
-  /*  function snackOpen() {
-    setState({
-      ...state,
-      snackBarOpen: true,
-    });
-  }
-
-  function snackClose() {
-    setState({
-      ...state,
-      snackBarOpen: false,
-    });
-  } */
 
   const filterResults = (searchTerm) => {
     if (searchTerm.length === 0) {

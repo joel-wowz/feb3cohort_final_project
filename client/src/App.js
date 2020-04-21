@@ -3,46 +3,16 @@ import FoodExpansionPanel from './components/ingredientcard/FoodExpansionPanel';
 import './App.css';
 import SearchAppBar from './SearchAppBar';
 import theme from './Theme';
-import useApplicationData from './hooks/useApplicationData';
+import { HistoryFunctions, useApplicationData } from './hooks/index';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FoodBar from './components/FoodBar';
+import { Button } from '@material-ui/core';
+import IngredientDB from './data/mock-db';
 
-/* const AllRoutes = () => {
-  return (
-    <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="Ingredients">Ingredients</Link>
-          </li>
-        </ul>
-      </nav>
-      <Switch>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/Ingredients">
-          <Ingredients />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
- */
 export default function App() {
+  const { handleClick, history } = HistoryFunctions();
   const { state, filterResults, snackHandler } = useApplicationData();
-
   function CheckSearch() {
     if (state.results.length === 1) {
       return (
@@ -57,33 +27,33 @@ export default function App() {
     }
     return [];
   }
+  function IngredientSearch(e) {
+    handleClick.GoForward(e);
+  }
   function SnackCondition() {
     return !state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackHandler} />;
   }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SearchAppBar onClick={filterResults} />
+      <SearchAppBar onClick={IngredientSearch} />
       <CheckSearch />
       <SnackCondition />
     </ThemeProvider>
   );
 }
 
-/* function Home() {
-  return (
-    <div>
-      <li> WHATS UP IM HOME</li>
-    </div>
-  );
-}
 function Ingredients() {
-  return <div>Hi</div>;
-}
-function About() {
+  const { handleClick, history } = HistoryFunctions();
+  console.log(history);
+
   return (
     <div>
-      <li> I'm just here for testing, not really an about</li>
+      Hi
+      <Button onClick={handleClick.GoForward}> LOVE FUCKING COCKS OH BABY</Button>
     </div>
   );
-} */
+}
+
+export { Ingredients };
