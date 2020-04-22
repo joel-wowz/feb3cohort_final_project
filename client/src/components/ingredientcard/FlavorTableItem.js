@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function FlavorTableItem(props) {
-  const { flavorDescription, matches, dislikes } = props;
+  const { flavorDescription, matches, dislikes, handler } = props;
 
   const classes = useStyles();
 
@@ -27,7 +27,7 @@ export default function FlavorTableItem(props) {
       <ListItem disableGutters={true}>
         <ListItemText secondary={flavorDescription} />
       </ListItem>
-      <FlavorChip matches={matches} dislikes={dislikes} />
+      <FlavorChip matches={matches} dislikes={dislikes} handler={handler} />
       <ListItem />
     </List>
   );

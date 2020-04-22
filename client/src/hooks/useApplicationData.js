@@ -9,6 +9,7 @@ export default function useApplicationData() {
     value: [],
     results: {},
     snackBarOpen: false,
+    ButtonGroup: false,
     history: [],
   });
 
@@ -41,5 +42,18 @@ export default function useApplicationData() {
 
     return { filterResults };
   }
-  return { state, resultWrapper, snackHandler };
+
+  function ButtonOn(bool = false) {
+    return bool
+      ? setState({
+          ...state,
+          ButtonGroup: true,
+        })
+      : setState({
+          ...state,
+          ButtonGroup: false,
+        });
+  }
+
+  return { state, resultWrapper, snackHandler, ButtonOn };
 }

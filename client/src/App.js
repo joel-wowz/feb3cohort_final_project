@@ -42,13 +42,15 @@ import BottomNavigation from '../src/components/BottomNav/BottomNavigation';
  */
 
 export default function App() {
-  const { state, snackHandler, resultWrapper } = useApplicationData();
+  const { state, snackHandler, resultWrapper, ButtonOn } = useApplicationData();
   const { filterResults } = resultWrapper();
   function CheckSearch() {
     if (state.results.length === 1) {
       return (
         <FoodExpansionPanel
+          state={state}
           weight={state.results[0].weight}
+          handler={ButtonOn}
           matches={state.results[0].primary_matches}
           description={state.results[0].description}
           name={state.results[0].name}

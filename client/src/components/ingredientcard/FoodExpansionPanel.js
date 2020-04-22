@@ -8,6 +8,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import WeightButton from './WeightButton';
 import FlavorTableItem from './FlavorTableItem';
 import { AddBox } from '@material-ui/icons';
+import { ButtonGroup } from '../ingredientcard/FlavorChip';
+import { Button } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -25,9 +27,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FoodExpansionPanel(props) {
   const classes = useStyles();
-  const { weight, description, name, matches, onClick } = props;
+  const { weight, description, name, matches, onClick, handler, state } = props;
   function snackTrue() {
     onClick(true);
+  }
+  function HideHandler() {
+    return state.ButtonGroup ? <ButtonGroup /> : 'not true';
   }
   return (
     <div className={classes.root}>
@@ -37,11 +42,12 @@ export default function FoodExpansionPanel(props) {
           <WeightButton weight={weight} />
           <AddBox className={classes.addIcon} onClick={snackTrue} />
         </ExpansionPanelSummary>
-
+        {state.ButtonGroup ? `true` : 'Not true'}
+        {<HideHandler />}
         <ExpansionPanelDetails className={classes.root}>
           <Typography>{description}</Typography>
           <Typography>
-            <FlavorTableItem matches={matches} />
+            <FlavorTableItem matches={matches} handler={handler} />
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
