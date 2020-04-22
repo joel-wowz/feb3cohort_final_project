@@ -5,7 +5,6 @@ import FoodUndo from './FoodUndo';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'Green',
     paddingRight: '200px',
   },
   '.MuiSnackbarContent-root': {
@@ -21,7 +20,7 @@ export default function FoodBar(props) {
   //const classes = useStyles();
   return (
     <Fragment>
-      <Snackbar open={true} message={MessageAdded} action={<FoodUndo onClick={onClick} />} />
+      <Snackbar className={classes.root} open={true} message={MessageAdded} action={<FoodUndo onClick={onClick} />} />
     </Fragment>
   );
 }

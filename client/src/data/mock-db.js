@@ -129,8 +129,8 @@ const IngredientDB = [
       'yogurt',
     ],
     avoids: [],
-    flavour: ['Sweet', 'Astirgent'],
-    techniques: ['bake, caramelize, deep-fry, grill, poach, raw, sauté, stew'],
+    flavour: [ 'Sweet', 'Astirgent' ],
+    techniques: [ 'bake, caramelize, deep-fry, grill, poach, raw, sauté, stew' ],
   },
   {
     id: 2,
@@ -139,7 +139,7 @@ const IngredientDB = [
     weight: 'Light',
     description:
       'is an East Asian liquid condiment of Chinese origin, traditionally made from a fermented paste of soybeans, roasted grain, brine, and Aspergillus oryzae or Aspergillus sojae molds.',
-    primary_matches: ['ginger ', 'honey '],
+    primary_matches: [ 'ginger ', 'honey ' ],
     matches: [
       'basil ',
       'beef ',
@@ -165,8 +165,8 @@ const IngredientDB = [
       'wasabi ',
     ],
     avoids: [],
-    flavour: ['Salty'],
-    techniques: ['add at end of cooking proccess, or to finish a dish'],
+    flavour: [ 'Salty' ],
+    techniques: [ 'add at end of cooking proccess, or to finish a dish' ],
   },
   {
     id: 3,
@@ -330,11 +330,9 @@ const IngredientDB = [
       'whiskey',
       'WINE: rice, sweet wine, vermouth',
     ],
-    flavour: ['lean(white meat), savoury, mild'],
+    flavour: [ 'lean(white meat), savoury, mild' ],
     avoids: [],
-    techniques: [
-      'bake, braise, broil, deep-fry, grill, poach, roast, sauté, steam, stew, stir-fry',
-    ],
+    techniques: [ 'bake, braise, broil, deep-fry, grill, poach, roast, sauté, steam, stew, stir-fry' ],
   },
   {
     id: 4,
@@ -379,15 +377,14 @@ const IngredientDB = [
     ],
     flavor: '',
     avoids: [],
-    techniques: ['barbecue, braise, corn, roast, simmer, smoke'],
+    techniques: [ 'barbecue, braise, corn, roast, simmer, smoke' ],
   },
   {
     id: 5,
     name: 'Honey',
     volume: 'loud',
     weight: 'medium',
-    description:
-      'Honey is a sweet, viscous food substance made by honey bees and some related insects',
+    description: 'Honey is a sweet, viscous food substance made by honey bees and some related insects',
     primary_matches: [
       'almonds',
       'apricots',
@@ -572,8 +569,7 @@ const IngredientDB = [
     ],
     flavor: 'sweet',
     avoids: 'basil',
-    techniques:
-      'Always use cooked (never raw); add near the end of the cooking process.',
+    techniques: 'Always use cooked (never raw); add near the end of the cooking process.',
   },
   {
     id: 6,
@@ -675,10 +671,8 @@ const IngredientDB = [
       'wine, esp. white',
     ],
     flavor: 'sweet, bitter, sour',
-    avoids: ['tarragon'],
-    techniques: [
-      'Always use cooked (never raw); add near the end of the cooking process.',
-    ],
+    avoids: [ 'tarragon' ],
+    techniques: [ 'Always use cooked (never raw); add near the end of the cooking process.' ],
   },
   {
     id: 8,

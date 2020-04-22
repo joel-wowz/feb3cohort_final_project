@@ -26,7 +26,7 @@ export default function FlavorChip(props) {
   return matches.map((match) => <Chip component="span" label={match} className={classes.root} />);
 }
 
-function ButtonGroup(args) {
-  return <Chip color="primary" size="small" avatar={<Avatar>{args}</Avatar>} />;
+function ButtonGroup(props) {
+  return <Chip color="primary" size="small" avatar={<Avatar> {props}</Avatar>} />;
 }
 export { ButtonGroup };
