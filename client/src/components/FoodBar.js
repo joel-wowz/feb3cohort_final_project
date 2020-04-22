@@ -21,12 +21,7 @@ export default function FoodBar(props) {
   //const classes = useStyles();
   return (
     <Fragment>
-      <Snackbar
-        className={{ root: classes.root }}
-        open={true}
-        message={MessageAdded}
-        action={<FoodUndo onClick={onClick} />}
-      />
+      <Snackbar open={true} message={MessageAdded} action={<FoodUndo onClick={onClick} />} />
     </Fragment>
   );
 }

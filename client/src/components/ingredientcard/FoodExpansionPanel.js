@@ -8,6 +8,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import WeightButton from './WeightButton';
 import FlavorTableItem from './FlavorTableItem';
 import { AddBox } from '@material-ui/icons';
+import { ButtonGroup } from '../ingredientcard/FlavorChip';
+import { Button } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -25,23 +27,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FoodExpansionPanel(props) {
   const classes = useStyles();
-  const { weight, description, name, matches, onClick } = props;
+  const { weight, description, name, matches, onClick, handler, state, addItem } = props;
+
   function snackTrue() {
     onClick(true);
+  }
+
+  function HideHandler() {
+    return state.ButtonGroup ? <ButtonGroup name={name} /> : null;
   }
   return (
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-          <Typography className={classes.heading}>{name}</Typography> {props.children}
+          <Typography component={'span'} className={classes.heading}>
+            {name}
+          </Typography>{' '}
+          {props.children}
           <WeightButton weight={weight} />
           <AddBox className={classes.addIcon} onClick={snackTrue} />
         </ExpansionPanelSummary>
-
-        <ExpansionPanelDetails className={classes.root}>
+        {<HideHandler name={name} />}
+        <ExpansionPanelDetails>
           <Typography>{description}</Typography>
           <Typography>
-            <FlavorTableItem matches={matches} />
+            <FlavorTableItem matches={matches} handler={handler} addItem={addItem} />
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

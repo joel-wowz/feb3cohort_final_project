@@ -9,7 +9,9 @@ export default function useApplicationData() {
     value: [],
     results: {},
     snackBarOpen: false,
+    ButtonGroup: false,
     history: [],
+    addItem: [],
   });
 
   //when Filter results is ran, return the corresponding Info
@@ -45,5 +47,22 @@ export default function useApplicationData() {
 
     return { filterResults };
   }
-  return { state, resultWrapper, snackHandler };
+
+  function ButtonOn(bool = false) {
+    return bool
+      ? setState({
+          ...state,
+          ButtonGroup: true,
+        })
+      : setState({
+          ...state,
+          ButtonGroup: false,
+        });
+  }
+  /*  const addItem = (item) => {
+    setState({
+      history: item,
+    });
+  }; */
+  return { state, resultWrapper, snackHandler, ButtonOn };
 }
