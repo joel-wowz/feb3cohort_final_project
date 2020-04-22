@@ -5,7 +5,7 @@ import IngredientDB from '../data/mock-db';
 //gonna be needing these soon
 /* import HistoryFunctions from './HistoryFunctions'; */
 export default function useApplicationData() {
-  const [ state, setState ] = useState({
+  const [state, setState] = useState({
     value: [],
     results: {},
     snackBarOpen: false,
@@ -31,10 +31,14 @@ export default function useApplicationData() {
       if (searchTerm.length === 0) {
         return [];
       }
-      const filtered = IngredientDB.filter((result) => result.name.includes(searchTerm));
+      const filtered = IngredientDB.filter((result) =>
+        result.name
+          .toLowerCase()
+          .includes(searchTerm.replace(/s$/g, '').toLowerCase())
+      );
       setState({
-        value: [ ...state.value, filtered ],
-        results: [ ...filtered ],
+        value: [...state.value, filtered],
+        results: [...filtered],
       });
       store.set('LocalAppStorage', { filtered, ...state.value });
     };
