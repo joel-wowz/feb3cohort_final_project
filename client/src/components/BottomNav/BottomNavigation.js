@@ -7,7 +7,7 @@ import { HomeSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'rgb(255, 138, 80)',
+    backgroundColor: 'rgb(255, 184, 140)',
     width: '100%',
     position: 'fixed',
     bottom: '0',
@@ -19,7 +19,12 @@ export default function BottomNavigationBar() {
 
   return (
     <BottomNavigation icon={<HomeSharp />} showLabels className={classes.root}>
-      <BottomNavigationAction label="Home" icon={<HomeSharp onClick={(e) => console.log('this works hey neat!')} />} />
+      <BottomNavigationAction
+        label="Home"
+        icon={
+          <HomeSharp onClick={(e) => console.log('this works hey neat!')} />
+        }
+      />
     </BottomNavigation>
   );
 }

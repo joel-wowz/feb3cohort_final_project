@@ -8,6 +8,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
+import { Autorenew } from '@material-ui/icons';
 
 //updated and removed hambuger
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   menuBar: {
     //Notes can't use background color hexcode for some reason, so rgb is easier to do then figuring what it do.
     // create Objects to apply colors to components
-    backgroundColor: 'rgb(255, 138, 80)',
+    backgroundColor: 'rgb(255, 184, 140)',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -71,7 +72,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   icon: {
-    height: '69px',
+    maxWidth: '100%',
+    height: 'auto',
+    width: '10rem',
   },
 }));
 

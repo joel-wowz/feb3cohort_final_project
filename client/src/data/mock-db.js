@@ -2,8 +2,8 @@ const IngredientDB = [
   {
     id: 1,
     name: 'Apple',
-    volume: 'Steady',
-    weight: 'Medium',
+    volume: 'moderate',
+    weight: 'medium',
     description:
       'An apple is a sweet, edible fruit produced by an apple tree (Malus domestica). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found today.',
     primary_matches: [
@@ -135,8 +135,8 @@ const IngredientDB = [
   {
     id: 2,
     name: 'Soy Sauce',
-    volume: 'Loud',
-    weight: 'Light',
+    volume: 'loud',
+    weight: 'light',
     description:
       'is an East Asian liquid condiment of Chinese origin, traditionally made from a fermented paste of soybeans, roasted grain, brine, and Aspergillus oryzae or Aspergillus sojae molds.',
     primary_matches: ['ginger ', 'honey '],
@@ -172,7 +172,7 @@ const IngredientDB = [
     id: 3,
     name: 'Chicken',
     volume: 'quiet',
-    weight: 'Medium',
+    weight: 'medium',
     description:
       'Chicken is a widely used and popular protien with a variety of cooking technqies. The light and dark meat both have unique taste and textures, as well as different cooking methods.',
     primary_matches: [
@@ -580,7 +580,8 @@ const IngredientDB = [
     name: 'Sage',
     volume: 'loud',
     weight: 'moderate',
-    description: 'Avocados are nice green stuff and they come from deez nuts',
+    description:
+      'Sage is an herb from an evergreen shrub, Salvia officinalis, in the mint family. Its long, grayish-green leaves take on a velvety, cotton-like texture when rubbed (meaning ground lightly and passed through a coarse sieve). ... Sage has a fragrant aroma and an astringent but warm flavor.',
     primary_matches: [
       'asparagus',
       'BEANS, esp. dried, green',
@@ -683,8 +684,8 @@ const IngredientDB = [
   {
     id: 8,
     name: 'Black-eyed Peas',
-    volume: 'Moderate',
-    weight: 'Light',
+    volume: 'moderate',
+    weight: 'light',
     description:
       'The black-eyed pea, black-eyed bean, or goat pea, a legume, is a subspecies of the cowpea, grown around the world for its medium-sized, edible bean. The common commercial variety is called the California Blackeye; it is pale-colored with a prominent black spot.',
     primary_matches: [
@@ -728,8 +729,8 @@ const IngredientDB = [
   {
     id: 9,
     name: 'Salt, smoked',
-    volume: 'Loud',
-    weight: 'Light',
+    volume: 'loud',
+    weight: 'light',
     description:
       'A dry smoked salt that is traditionally used for finishing dishes, imparts a light smokey flavor to foods as well as a decent salt crunch',
     primary_matches: [],
