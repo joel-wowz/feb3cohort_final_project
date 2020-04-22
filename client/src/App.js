@@ -42,7 +42,7 @@ import BottomNavigation from '../src/components/BottomNav/BottomNavigation';
  */
 
 export default function App() {
-  const { state, snackHandler, resultWrapper, ButtonOn } = useApplicationData();
+  const { state, snackHandler, resultWrapper, ButtonOn, addItem } = useApplicationData();
   const { filterResults } = resultWrapper();
   function CheckSearch() {
     if (state.results.length === 1) {
@@ -55,6 +55,7 @@ export default function App() {
           description={state.results[0].description}
           name={state.results[0].name}
           onClick={snackHandler}
+          addItem={addItem}
         />
       );
     }

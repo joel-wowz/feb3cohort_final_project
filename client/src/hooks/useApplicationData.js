@@ -11,6 +11,7 @@ export default function useApplicationData() {
     snackBarOpen: false,
     ButtonGroup: false,
     history: [],
+    addItem: [],
   });
 
   //when Filter results is ran, return the corresponding Info
@@ -54,6 +55,10 @@ export default function useApplicationData() {
           ButtonGroup: false,
         });
   }
-
+  /*  const addItem = (item) => {
+    setState({
+      history: item,
+    });
+  }; */
   return { state, resultWrapper, snackHandler, ButtonOn };
 }
