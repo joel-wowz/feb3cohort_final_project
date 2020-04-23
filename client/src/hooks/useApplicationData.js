@@ -40,7 +40,7 @@ export default function useApplicationData() {
         value: [ ...state.value, filtered ],
         results: [ ...filtered ],
       });
-      store.set('LocalAppStorage', { filtered, ...state.value });
+      store.set('LocalAppStorage', { filtered, ...state });
     };
 
     return { filterResults };

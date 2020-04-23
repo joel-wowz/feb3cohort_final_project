@@ -45,7 +45,7 @@ export default function App() {
   const { state, snackHandler, resultWrapper, ButtonOn, addItem } = useApplicationData();
   const { filterResults } = resultWrapper();
   function CheckSearch() {
-    if (state.results.length === 1) {
+    if (state.results.length > 0) {
       return (
         <FoodExpansionPanel
           state={state}
@@ -56,14 +56,15 @@ export default function App() {
           name={state.results[0].name}
           onClick={snackHandler}
           addItem={addItem}
+          volume={state.results[0].volume}
         />
       );
     }
-    return [];
+    return null;
   }
 
   function SnackCondition() {
-    return !state.snackBarOpen ? [] : <FoodBar message={state.results[0].name} onClick={snackHandler} />;
+    return !state.snackBarOpen ? null : <FoodBar message={state.results[0].name} onClick={snackHandler} />;
   }
 
   return (

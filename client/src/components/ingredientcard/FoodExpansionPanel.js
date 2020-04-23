@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -6,10 +6,10 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import WeightButton from './WeightButton';
+import VolumeButton from './VolumeButton';
 import FlavorTableItem from './FlavorTableItem';
 import { AddBox } from '@material-ui/icons';
 import { ButtonGroup } from '../ingredientcard/FlavorChip';
-import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FoodExpansionPanel(props) {
   const classes = useStyles();
-  const { weight, description, name, matches, onClick, handler, addItem, state } = props;
+  const { weight, description, name, matches, onClick, handler, addItem, state, volume } = props;
   const [ item, setItem ] = useState([]);
 
   function snackTrue() {
@@ -39,8 +39,18 @@ export default function FoodExpansionPanel(props) {
   }
   function ItemReturn(props) {
     const { item } = props;
+
     if (item.length >= 0) {
-      return item.map((e) => <Chip label={e} />);
+      return item.map((e) => (
+        <Fragment>
+          <ExpansionPanel>
+            <ExpansionPanelSummary>
+              {e}
+              <Typography component={'span'} className={classes.heading} />
+            </ExpansionPanelSummary>
+          </ExpansionPanel>
+        </Fragment>
+      ));
     }
   }
 
@@ -59,15 +69,14 @@ export default function FoodExpansionPanel(props) {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
           <Typography component={'span'} className={classes.heading}>
             {name}
-          </Typography>{' '}
+          </Typography>
           {props.children}
-          <WeightButton weight={weight} />
-          <ItemReturn item={item} />
+          <WeightButton weight={weight} name={name} />
+          <VolumeButton volume={volume} />
           <AddBox className={classes.addIcon} onClick={snackTrue} />
           {item.length}
-          <temReturn item={item} />
         </ExpansionPanelSummary>
-        {<HideHandler name={name} />}
+        <HideHandler name={name} />
         <ExpansionPanelDetails>
           <Typography>{description}</Typography>
           <Typography>
@@ -75,6 +84,7 @@ export default function FoodExpansionPanel(props) {
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
+      <ItemReturn item={item} />
     </div>
   );
 }

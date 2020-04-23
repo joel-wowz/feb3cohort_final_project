@@ -4,7 +4,6 @@ import List from '@material-ui/core/List';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItemText from '@material-ui/core/ListItemText';
 import FlavorChip from '../ingredientcard/FlavorChip';
-import ButtonGroup from '../ingredientcard/FlavorChip';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',

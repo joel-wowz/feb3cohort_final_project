@@ -1,6 +1,6 @@
 import React from 'react';
 import Chip from '@material-ui/core/Chip';
-import Avatar from '@material-ui/core/Avatar';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,14 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function FlavorChip(props) {
   const classes = useStyles();
-  const { matches, handler, addItem, ingredientAdder } = props;
-
-  function clickHandler() {
-    handler(true);
-  }
-  function HandleHandler(e) {
-    addItem(e);
-  }
+  const { matches, ingredientAdder } = props;
 
   return matches.map((match) => (
     <Chip
