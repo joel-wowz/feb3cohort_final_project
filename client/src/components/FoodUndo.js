@@ -7,7 +7,7 @@ export default function FoodUndo(props) {
   return (
     <Fragment>
       <Button onClick={() => onClick(false)} color="inherit" size="small">
-        Undo
+        OK
       </Button>
     </Fragment>
   );
