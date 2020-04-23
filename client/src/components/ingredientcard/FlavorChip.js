@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function FlavorChip(props) {
   const classes = useStyles();
-  const { matches, handler, addItem } = props;
+  const { matches, handler, addItem, ingredientAdder } = props;
 
   function clickHandler() {
     handler(true);
@@ -23,10 +23,18 @@ export default function FlavorChip(props) {
     addItem(e);
   }
 
-  return matches.map((match) => <Chip component="span" label={match} className={classes.root} />);
+  return matches.map((match) => (
+    <Chip
+      component="span"
+      label={match}
+      className={classes.root}
+      clickable={true}
+      onClick={() => ingredientAdder(match)}
+    />
+  ));
 }
 
 function ButtonGroup(props) {
-  return <Chip color="primary" size="small" avatar={<Avatar> {props}</Avatar>} />;
+  return <Chip className="chipper" color="primary" size="small" avatar={<Avatar> {props}</Avatar>} />;
 }
 export { ButtonGroup };
