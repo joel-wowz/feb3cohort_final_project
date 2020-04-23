@@ -56,7 +56,8 @@ export default function FoodExpansionPanel(props) {
   }
   function ItemReturn(props) {
     const { item } = props;
-
+    //this is the Item saved on select
+    //should be fine
     if (item.length >= 0) {
       return item.map((e) => (
         <Fragment>
