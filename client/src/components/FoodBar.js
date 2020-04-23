@@ -15,12 +15,17 @@ const useStyles = makeStyles({
 export default function FoodBar(props) {
   const classes = useStyles();
   const { message, onClick } = props;
-  const MessageAdded = `${message} has been added`;
+  const MessageAdded = `Ingredients from ${message} have been removed`;
 
   //const classes = useStyles();
   return (
     <Fragment>
-      <Snackbar className={classes.root} open={true} message={MessageAdded} action={<FoodUndo onClick={onClick} />} />
+      <Snackbar
+        className={classes.root}
+        open={true}
+        message={MessageAdded}
+        action={<FoodUndo onClick={onClick} />}
+      />
     </Fragment>
   );
 }
