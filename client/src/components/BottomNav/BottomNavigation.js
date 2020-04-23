@@ -19,7 +19,7 @@ export default function BottomNavigationBar() {
 
   return (
     <BottomNavigation icon={<HomeSharp />} showLabels className={classes.root}>
-      <BottomNavigationAction label="Home" icon={<HomeSharp onClick={(e) => console.log('this works hey neat!')} />} />
+      <BottomNavigationAction id="homebtn" label="Home" icon={<HomeSharp />} />
     </BottomNavigation>
   );
 }

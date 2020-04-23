@@ -6,13 +6,15 @@ const useStyles = makeStyles({
   root: {
     fontSize: '9px',
     background: (props) =>
-      VolumeCheck(props) === 'heavy'
+      VolumeCheck(props) === 'loud'
         ? 'rgb(255, 152, 0)'
-        : VolumeCheck(props) === 'medium'
-          ? 'rgb(255, 217, 91)'
-          : VolumeCheck(props) === 'light'
-            ? 'rgb(255, 233, 125)'
-            : VolumeCheck(props) === 'moderate' ? 'rgb(255, 183, 77)' : 'rgb(255, 233, 125)',
+        : VolumeCheck(props) === 'steady'
+        ? 'rgb(255, 217, 91)'
+        : VolumeCheck(props) === 'quiet'
+        ? 'rgb(255, 233, 125)'
+        : VolumeCheck(props) === 'moderate'
+        ? 'rgb(255, 183, 77)'
+        : 'rgb(255, 233, 125)',
     minWidth: '9vw',
     minHeight: '3.2vh',
     marginLeft: '20px',

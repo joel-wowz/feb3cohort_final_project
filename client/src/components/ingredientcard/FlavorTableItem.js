@@ -27,11 +27,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function FlavorTableItem(props) {
-  const { flavorDescription, matches, dislikes, handler, addItem, ingredientAdder, secondaryMatches } = props;
+  const {
+    flavorDescription,
+    matches,
+    dislikes,
+    handler,
+    addItem,
+    ingredientAdder,
+    secondaryMatches,
+    techniques,
+  } = props;
   const classes = useStyles();
 
   function SecondaryMatches() {
-    return secondaryMatches.map((e) => <Chip className={classes.BadgeColor} label={e} />);
+    return secondaryMatches.map((e) => (
+      <Chip className={classes.BadgeColor} label={e} />
+    ));
   }
 
   return (
@@ -39,9 +50,11 @@ export default function FlavorTableItem(props) {
       <List component="label" className={classes.root}>
         <ListItem disableGutters={true}>
           <ListItemText component="span" secondary={flavorDescription} />
+          <ListItem component="span" tertiary={techniques} />
         </ListItem>
         <FlavorChip
           matches={matches}
+          secondaryMatches={secondaryMatches}
           dislikes={dislikes}
           handler={handler}
           addItem={addItem}

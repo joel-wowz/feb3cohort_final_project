@@ -338,7 +338,7 @@ const IngredientDB = [
   },
   {
     id: 4,
-    name: 'beef brisket',
+    name: 'Beef Brisket',
     volume: 'Moderate',
     weight: 'Medium',
     description:
@@ -409,6 +409,7 @@ const IngredientDB = [
       'Orange: Juice, Zest',
       'Pistachios',
       'Raisins',
+      'Sage',
       'Soy Sauce',
       'Sugar: Brown, White',
       'Vanilla',
@@ -466,7 +467,6 @@ const IngredientDB = [
       'Red Pepper Flakes',
       'Rhubarb',
       'Rum',
-      'Sage',
       'Sauces',
       'Southern Cuisine',
       'Sweet Potatoes',
@@ -572,9 +572,10 @@ const IngredientDB = [
       'Wine, Esp. White',
     ],
     flavor: 'Sweet',
-    avoids: 'Basil',
-    techniques:
+    avoids: ['Sage', 'Basil'],
+    techniques: [
       'Always use cooked (never raw); add near the end of the cooking process.',
+    ],
   },
   {
     id: 6,
@@ -686,7 +687,7 @@ const IngredientDB = [
     id: 8,
     name: 'Black-eyed Peas',
     volume: 'Moderate',
-    weight: 'Light',
+    weight: 'Heavy',
     description:
       'The black-eyed pea, black-eyed bean, or goat pea, a legume, is a subspecies of the cowpea, grown around the world for its medium-sized, edible bean. The common commercial variety is called the California Blackeye; it is pale-colored with a prominent black spot.',
     primary_matches: [
@@ -695,6 +696,7 @@ const IngredientDB = [
       'Onions: Red, Yellow',
       'Pepper, Black',
       'Southern Cuisine (American)',
+      'Salt, Smoked',
     ],
     matches: [
       'African Cuisine',
@@ -725,7 +727,7 @@ const IngredientDB = [
     ],
     flavor: 'Starchy, Earthy, Nutty',
     avoids: [],
-    techniques: 'simmer',
+    techniques: ['simmer'],
   },
   {
     id: 9,
@@ -734,7 +736,7 @@ const IngredientDB = [
     weight: 'Light',
     description:
       'A dry smoked salt that is traditionally used for finishing dishes, imparts a light smokey flavor to foods as well as a decent salt crunch',
-    primary_matches: [],
+    primary_matches: ['Beef Brisket', 'Bacon', 'BBQ'],
     matches: [
       'Brines, Esp. For Pork',
       'Chicken',
@@ -751,7 +753,7 @@ const IngredientDB = [
     ],
     avoids: [],
     flavor: 'salty, smokey',
-    techniques: 'Brine, finsish, cure',
+    techniques: ['Brine, finsish, cure'],
   },
 ];
 
