@@ -9,6 +9,7 @@ import WeightButton from './WeightButton';
 import FlavorTableItem from './FlavorTableItem';
 import { AddBox } from '@material-ui/icons';
 import { ButtonGroup } from '../ingredientcard/FlavorChip';
+import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   addIcon: {
     marginLeft: 'auto',
   },
+  itemStuff: {
+    backgroundColor: '#FF8A50',
+  },
 }));
 
 export default function FoodExpansionPanel(props) {
@@ -35,7 +39,9 @@ export default function FoodExpansionPanel(props) {
   }
   function ItemReturn(props) {
     const { item } = props;
-    return <div>{item}</div>;
+    if (item.length >= 0) {
+      return item.map((e) => <Chip label={e} />);
+    }
   }
 
   function ingredientAdder(e) {
@@ -56,6 +62,7 @@ export default function FoodExpansionPanel(props) {
           </Typography>{' '}
           {props.children}
           <WeightButton weight={weight} />
+          <ItemReturn item={item} />
           <AddBox className={classes.addIcon} onClick={snackTrue} />
           {item.length}
           <temReturn item={item} />
@@ -65,7 +72,6 @@ export default function FoodExpansionPanel(props) {
           <Typography>{description}</Typography>
           <Typography>
             <FlavorTableItem matches={matches} handler={handler} addItem={addItem} ingredientAdder={ingredientAdder} />
-            <ItemReturn item={item} />
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

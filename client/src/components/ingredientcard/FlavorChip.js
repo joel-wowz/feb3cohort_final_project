@@ -34,7 +34,7 @@ export default function FlavorChip(props) {
   ));
 }
 
-function ButtonGroup(props) {
-  return <Chip className="chipper" color="primary" size="small" avatar={<Avatar> {props}</Avatar>} />;
+function ButtonGroup() {
+  return <Chip className="chipper" color="primary" size="small" />;
 }
 export { ButtonGroup };
