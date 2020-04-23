@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FoodExpansionPanel(props) {
   const classes = useStyles();
-  const { weight, description, name, matches, onClick, handler, addItem, state, volume } = props;
+  const { weight, description, name, matches, onClick, handler, addItem, state, volume, secondaryMatches } = props;
   const [ item, setItem ] = useState([]);
 
   function snackTrue() {
@@ -64,7 +64,7 @@ export default function FoodExpansionPanel(props) {
     return state.ButtonGroup ? <ButtonGroup name={name} /> : null;
   }
   return (
-    <div className={classes.root} onClick={(e) => e.preventDefault}>
+    <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
           <Typography component={'span'} className={classes.heading}>
@@ -80,7 +80,13 @@ export default function FoodExpansionPanel(props) {
         <ExpansionPanelDetails>
           <Typography>{description}</Typography>
           <Typography>
-            <FlavorTableItem matches={matches} handler={handler} addItem={addItem} ingredientAdder={ingredientAdder} />
+            <FlavorTableItem
+              matches={matches}
+              handler={handler}
+              addItem={addItem}
+              ingredientAdder={ingredientAdder}
+              secondaryMatches={secondaryMatches}
+            />
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

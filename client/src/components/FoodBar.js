@@ -5,7 +5,7 @@ import FoodUndo from './FoodUndo';
 
 const useStyles = makeStyles({
   root: {
-    paddingRight: '200px',
+    paddingBottom: '50px',
   },
   '.MuiSnackbarContent-root': {
     backgroundColor: 'Blue',

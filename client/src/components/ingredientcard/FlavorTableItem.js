@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItemText from '@material-ui/core/ListItemText';
 import FlavorChip from '../ingredientcard/FlavorChip';
+import Chip from '@material-ui/core/Chip';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -16,11 +17,22 @@ const useStyles = makeStyles((theme) => ({
   badges: {
     color: 'Green',
   },
+  //these are secondary matches colors
+  BadgeColor: {
+    backgroundColor: 'rgb(255, 173, 66)',
+    borderRadius: '4px',
+    marginRight: '4px',
+    color: 'Black',
+    fontFamily: 'Impact',
+  },
 }));
 export default function FlavorTableItem(props) {
-  const { flavorDescription, matches, dislikes, handler, addItem, ingredientAdder } = props;
-
+  const { flavorDescription, matches, dislikes, handler, addItem, ingredientAdder, secondaryMatches } = props;
   const classes = useStyles();
+
+  function SecondaryMatches() {
+    return secondaryMatches.map((e) => <Chip className={classes.BadgeColor} label={e} />);
+  }
 
   return (
     <React.Fragment>
@@ -34,7 +46,9 @@ export default function FlavorTableItem(props) {
           handler={handler}
           addItem={addItem}
           ingredientAdder={ingredientAdder}
+          onClick={(e) => e}
         />
+        <SecondaryMatches />
       </List>
     </React.Fragment>
   );

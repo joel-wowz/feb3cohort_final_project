@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'rgb(255, 173, 66)',
+    //here to change color for primary matches
+    backgroundColor: 'rgb(255, 138, 80)',
     borderRadius: '4px',
     marginRight: '4px',
     color: 'Black',
