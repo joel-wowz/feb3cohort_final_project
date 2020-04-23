@@ -27,11 +27,28 @@ const useStyles = makeStyles((theme) => ({
   itemStuff: {
     backgroundColor: '#FF8A50',
   },
+  text: {
+    textAlign: 'justify',
+    wordWrap: 'break-word',
+    margin: '0 20px',
+  },
 }));
 
 export default function FoodExpansionPanel(props) {
   const classes = useStyles();
-  const { weight, description, name, matches, onClick, handler, addItem, state, volume, secondaryMatches } = props;
+  const {
+    weight,
+    description,
+    name,
+    matches,
+    onClick,
+    handler,
+    addItem,
+    state,
+    volume,
+    secondaryMatches,
+    techniques,
+  } = props;
   const [ item, setItem ] = useState([]);
 
   function snackTrue() {
@@ -73,6 +90,7 @@ export default function FoodExpansionPanel(props) {
           {props.children}
           <WeightButton weight={weight} name={name} />
           <VolumeButton volume={volume} />
+          <div className={classes.text}>{techniques}</div>
           <AddBox className={classes.addIcon} onClick={snackTrue} />
           {item.length}
         </ExpansionPanelSummary>

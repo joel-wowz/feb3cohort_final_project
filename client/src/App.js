@@ -57,6 +57,7 @@ export default function App() {
           onClick={snackHandler}
           addItem={addItem}
           secondaryMatches={state.results[0].matches}
+          techniques={state.results[0].techniques}
           volume={state.results[0].volume}
         />
       );
