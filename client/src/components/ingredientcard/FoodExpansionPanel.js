@@ -61,12 +61,17 @@ export default function FoodExpansionPanel(props) {
     if (item.length >= 0) {
       return item.map((e) => (
         <Fragment>
-          <ExpansionPanel>
-            <ExpansionPanelSummary>
-              {e}
-              <Typography component={'span'} className={classes.heading} />
-            </ExpansionPanelSummary>
-          </ExpansionPanel>
+          <div className={classes.root}>
+            <ExpansionPanel>
+              <ExpansionPanelSummary>
+                <Typography component={'span'} className={classes.heading}>
+                  {e}
+                </Typography>
+                <VolumeButton volume="steady" />
+                <WeightButton weight="medium" />
+              </ExpansionPanelSummary>
+            </ExpansionPanel>
+          </div>
         </Fragment>
       ));
     }

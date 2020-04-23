@@ -40,9 +40,7 @@ export default function FlavorTableItem(props) {
   const classes = useStyles();
 
   function SecondaryMatches() {
-    return secondaryMatches.map((e) => (
-      <Chip className={classes.BadgeColor} label={e} />
-    ));
+    return secondaryMatches.map((e) => <Chip className={classes.BadgeColor} label={e} />);
   }
 
   return (

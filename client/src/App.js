@@ -48,6 +48,7 @@ export default function App() {
     if (state.results.length > 0) {
       return (
         <FoodExpansionPanel
+          filterResults={filterResults}
           state={state}
           weight={state.results[0].weight}
           handler={ButtonOn}
